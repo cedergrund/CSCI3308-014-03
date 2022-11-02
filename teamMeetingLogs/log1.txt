@@ -1,0 +1,24 @@
+Meeting Time: 30 minutes
+
+Notes:
+1. Starting work on wireframes - Greg and Linda using Figma
+
+2. Starting work on login/register pages - Steven/Linda
+
+3. Went in depth of the features our game could have. (All updated on google doc)
+ *feel free to add any other idea/feature to the doc*
+ -Features:
+  Login/Registration Page
+  Home Page
+  Video Game search
+  Use Steam API to view user data
+  Get users friends
+  Compare stats with friends
+
+Deadlines:
+Lab10:
+  1. Add use-case diagram to repo
+  2. Add wireframe to repo
+  
+Project:
+  1. Login/Register/Home pages done by this week
