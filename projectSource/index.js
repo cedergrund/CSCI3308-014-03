@@ -51,5 +51,31 @@ app.get('/', (req, res) => {
     res.render('pages/home');
 });
 
+app.get("/login", (req, res) => {
+    res.render("pages/login");
+  });
+  
+app.post("/login", (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+    const query = "select * from students where users.username = $1";
+    const values = [username];
+  
+db.one(query, values)
+    .then((data) => {
+    user.username = username;
+    user.password = password;
+  
+    req.session.user = user;
+    req.session.save();
+  
+    res.redirect("/");
+    })
+    .catch((err) => {
+    console.log(err);
+    res.redirect("/login");
+    });
+});
+
 app.listen(3000);
 console.log('Server is listening on port 3000');
