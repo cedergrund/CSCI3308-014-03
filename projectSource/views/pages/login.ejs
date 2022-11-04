@@ -2,23 +2,18 @@
 
 <main>
   <div class="container">
-    <!-- THE REST OF YOUR HTML CODE GOES HERE -->
-    <br>
-    <br>
-    <br>
+    <h1>Login:</h1>
     <form action = "/login" method = "POST">
-        <!-- Email input -->
-        <div class="form-outline mb-3">
-          <label class="form-label" for="email">Email address</label>
-          <input type="text" id="email" class="form-control" pattern = ".+(@).+" name = "email" />
-          <small class="form-text text-muted">Input your email here</small>
-        </div>
-      
         <!-- Username Input input -->
         <div class="form-outline mb-3">
           <label class="form-label" for="username">Username</label>
           <input type="text" id="username" class="form-control" name = "username"/>
-          <small class="form-text text-muted">Input your email here</small>
+          <small class="form-text text-muted">Input your username here</small>
+        </div>
+
+        <div class="form-outline mb-3">
+          <label for="inputPassword3" class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" id="inputPassword3 password">
         </div>
       
         <!-- Submit button -->

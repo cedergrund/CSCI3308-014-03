@@ -47,35 +47,64 @@ app.use(
     express.static("resources")
 );
 
+app.listen(3000);
+console.log('Server is listening on port 3000');
+
+
+
 app.get('/', (req, res) => {
     res.render('pages/home');
 });
 
-app.get("/login", (req, res) => {
-    res.render("pages/login");
-  });
-  
-app.post("/login", (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
-    const query = "select * from students where users.username = $1";
-    const values = [username];
-  
-db.one(query, values)
-    .then((data) => {
-    user.username = username;
-    user.password = password;
-  
-    req.session.user = user;
-    req.session.save();
-  
-    res.redirect("/");
-    })
-    .catch((err) => {
-    console.log(err);
-    res.redirect("/login");
-    });
-});
+// app.get('/', (req, res) =>{
+//     res.redirect('/login'); //this will call the /anotherRoute route in the API
+//   });
 
-app.listen(3000);
-console.log('Server is listening on port 3000');
+  app.get('/register', (req, res) => {
+    res.render('pages/register.ejs');
+  });
+
+app.post('/register', async (req, res) => { 
+    const hash = await bcrypt.hash(req.body.password, 10);
+    const query = 'insert into users (username, email, password) values ($1, $2, $3);';
+    db.any(query, [
+        req.body.username,
+        req.body.email,
+        hash
+    ])
+    .then(function (data) {
+        res.redirect('/login');
+    })
+    .catch(function (err) {
+        res.render('pages/register.ejs', {message: "Account already exists."});
+    });
+  });
+
+app.get('/login', (req, res) => {
+    res.render('pages/login.ejs');
+  });
+
+app.post('/login', async (req, res) => { 
+    const username = req.body.username;
+    const query = "select * from users where username = $1";
+
+    // get the student_id based on the emailid
+    db.one(query, username)
+    .then(async user => {
+        const match = await bcrypt.compare(req.body.password, user.password); //await is explained in #8
+        if (match){
+            req.session.user = {
+                api_key: process.env.API_KEY,
+              };
+            req.session.save();
+            res.redirect('/home');
+        }
+        else{
+            res.redirect('/register');
+            console.log("Incorrect username or password.");
+        }
+    })
+        .catch((err) => {
+            res.render('pages/login.ejs');
+        });
+});
