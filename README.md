@@ -59,3 +59,5 @@ User side of this where
 Categorize by genre, most popular, 
 Community for specific games that you add
 Portal that shows your rankings within their specific games
+
+Wireframe: https://www.figma.com/file/fiztjj19LD4pIsjfJZrVGa/Untitled?node-id=0%3A1 
