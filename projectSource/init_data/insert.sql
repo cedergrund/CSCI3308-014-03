@@ -1,3 +1,3 @@
-INSERT INTO users (username, email, password) VALUES
-('abc', 'abc@gmail.com', '123'),
-('aaa', 'abc@gmail.com', '111');
+INSERT INTO users (username, email, steam_id, password) VALUES
+('abc', 'abc@gmail.com', '76561197960435530', '123'),
+('aaa', 'aaa@gmail.com', '76561197960435530', '111');
