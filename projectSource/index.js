@@ -4,6 +4,8 @@ const pgp = require('pg-promise')();
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
+const axios = require('axios');
+
 
 // database configuration
 const dbConfig = {
@@ -66,10 +68,11 @@ app.get('/register', (req, res) => {
 
 app.post('/register', async (req, res) => {
     const hash = await bcrypt.hash(req.body.password, 10);
-    const query = 'insert into users (username, email, password) values ($1, $2, $3);';
+    const query = 'insert into users (username, email, steam_id, password) values ($1, $2, $3, $4);';
     db.any(query, [
         req.body.username,
         req.body.email,
+        req.body.steam_id,
         hash
     ])
         .then(function (data) {
@@ -95,13 +98,14 @@ app.post('/login', async (req, res) => {
             if (match) {
                 req.session.user = {
                     api_key: process.env.API_KEY,
+                    // steam_id: 
                 };
                 req.session.save();
-                res.redirect('/');
+                res.redirect('/profile');
+                // res.render('pages/home.ejs', {message: "Welcome :)"});
             }
             else {
-                res.redirect('/register');
-                console.log("Incorrect username or password.");
+                res.render('pages/login.ejs', { message: "Incorrect username or password." });
             }
         })
         .catch((err) => {
@@ -124,4 +128,44 @@ app.get('/gamesearch', (req, res) => {
                 message: err.message,
             });
         });
+});
+app.get('/profile', (req, res) => {
+    // var steam_id = "SELECT * FROM users WHERE username =  ORDER BY avg_rating DESC LIMIT 3;";
+    // db.any(steam_id)
+    //   .then(function (rows) {
+    //     res.send(rows)
+    //   })
+    //   .catch(function (err) {
+    //     res.send(err)
+    //     console.log("didn't work");
+    //     res.render('pages/home.ejs', {results: [], error: true});
+    //   });
+
+    axios({
+        url: `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002`,
+        method: 'GET',
+        dataType: 'json',
+        params: {
+            "key": req.session.user.api_key,
+            "steamids": req.session.user.steam_id,
+        }
+    })
+        .then(results => {
+            console.log(results.data); // the results will be displayed on the terminal if the docker containers are running
+            if (results.data.page.totalElements == 0) {
+                res.render('pages/home.ejs', { results: [], error: true });
+            }
+            else {
+                res.render('pages/home.ejs', { results, error: false });
+            }
+        })
+        .catch(error => {
+            console.log("didn't work");
+            res.render('pages/home.ejs', { results: [], error: true });
+        })
+});
+
+app.get("/logout", (req, res) => {
+    req.session.destroy();
+    res.render("pages/login.ejs", { message: "Logged out Successfully" });
 });
