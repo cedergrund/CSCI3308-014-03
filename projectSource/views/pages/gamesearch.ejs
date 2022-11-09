@@ -1,0 +1,34 @@
+<%- include ('../partials/header') %>
+    <%- include ('../partials/menu') %>
+        <main>
+            <div class="container">
+                <% if (locals.message) { %>
+                    <div class="alert alert-<%- locals.error ? 'danger' : 'success' %>" role="alert">
+                        <%= message %>
+                    </div>
+                    <% } %>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Developer</th>
+                                    <th scope="col">Release Date</th>
+                                </tr>
+                            </thead>
+                            <% games.forEach(function(element){%>
+                                <tr>
+                                    <td>
+                                        <%= element.name %>
+                                    </td>
+                                    <td>
+                                        <%= element.developer %>
+                                    </td>
+                                    <td>
+                                        <%=element.release_date.toLocaleDateString() %>
+                                    </td>
+                                </tr>
+                                <% });%>
+                        </table>
+            </div>
+        </main>
+        <%- include ('../partials/footer') %>

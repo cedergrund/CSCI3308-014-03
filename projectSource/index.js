@@ -62,11 +62,11 @@ app.get('/', (req, res) => {
 //     res.redirect('/login'); //this will call the /anotherRoute route in the API
 //   });
 
-  app.get('/register', (req, res) => {
+app.get('/register', (req, res) => {
     res.render('pages/register.ejs');
-  });
+});
 
-app.post('/register', async (req, res) => { 
+app.post('/register', async (req, res) => {
     const hash = await bcrypt.hash(req.body.password, 10);
     const query = 'insert into users (username, email, steam_id, password) values ($1, $2, $3, $4);';
     db.any(query, [
@@ -75,44 +75,60 @@ app.post('/register', async (req, res) => {
         req.body.steam_id,
         hash
     ])
-    .then(function (data) {
-        res.redirect('/login');
-    })
-    .catch(function (err) {
-        res.render('pages/register.ejs', {message: "Account already exists."});
-    });
-  });
+        .then(function (data) {
+            res.redirect('/login');
+        })
+        .catch(function (err) {
+            res.render('pages/register.ejs', { message: "Account already exists." });
+        });
+});
 
 app.get('/login', (req, res) => {
     res.render('pages/login.ejs');
-  });
+});
 
-app.post('/login', async (req, res) => { 
+app.post('/login', async (req, res) => {
     const username = req.body.username;
     const query = "select * from users where username = $1";
 
     // get the student_id based on the emailid
     db.one(query, username)
-    .then(async user => {
-        const match = await bcrypt.compare(req.body.password, user.password); //await is explained in #8
-        if (match){
-            req.session.user = {
-                api_key: process.env.API_KEY,
-                // steam_id: 
-              };
-            req.session.save();
-            res.redirect('/profile');
-            // res.render('pages/home.ejs', {message: "Welcome :)"});
-        }
-        else{
-            res.render('pages/login.ejs', {message: "Incorrect username or password."});
-        }
-    })
+        .then(async user => {
+            const match = await bcrypt.compare(req.body.password, user.password); //await is explained in #8
+            if (match) {
+                req.session.user = {
+                    api_key: process.env.API_KEY,
+                    // steam_id: 
+                };
+                req.session.save();
+                res.redirect('/profile');
+                // res.render('pages/home.ejs', {message: "Welcome :)"});
+            }
+            else {
+                res.render('pages/login.ejs', { message: "Incorrect username or password." });
+            }
+        })
         .catch((err) => {
             res.render('pages/login.ejs');
         });
 });
 
+app.get('/gamesearch', (req, res) => {
+    const query = "select * from games";
+    db.any(query)
+        .then((games) => {
+            res.render("pages/gamesearch.ejs", {
+                games
+            });
+        })
+        .catch((err) => {
+            res.render("pages/gamesearch.ejs", {
+                games: [],
+                errors: true,
+                message: err.message,
+            });
+        });
+});
 app.get('/profile', (req, res) => {
     // var steam_id = "SELECT * FROM users WHERE username =  ORDER BY avg_rating DESC LIMIT 3;";
     // db.any(steam_id)
@@ -127,29 +143,29 @@ app.get('/profile', (req, res) => {
 
     axios({
         url: `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002`,
-            method: 'GET',
-            dataType:'json',
-            params: {
-                "key": req.session.user.api_key,
-                "steamids": req.session.user.steam_id,
+        method: 'GET',
+        dataType: 'json',
+        params: {
+            "key": req.session.user.api_key,
+            "steamids": req.session.user.steam_id,
+        }
+    })
+        .then(results => {
+            console.log(results.data); // the results will be displayed on the terminal if the docker containers are running
+            if (results.data.page.totalElements == 0) {
+                res.render('pages/home.ejs', { results: [], error: true });
             }
-    })
-    .then(results => {
-        console.log(results.data); // the results will be displayed on the terminal if the docker containers are running
-        if (results.data.page.totalElements == 0){
-            res.render('pages/home.ejs', {results: [], error: true});
-        }
-        else {
-            res.render('pages/home.ejs', {results, error: false});
-        }
-    })
-    .catch(error => {
-        console.log("didn't work");
-        res.render('pages/home.ejs', {results: [], error: true});
-    })
+            else {
+                res.render('pages/home.ejs', { results, error: false });
+            }
+        })
+        .catch(error => {
+            console.log("didn't work");
+            res.render('pages/home.ejs', { results: [], error: true });
+        })
 });
-    
+
 app.get("/logout", (req, res) => {
     req.session.destroy();
-    res.render("pages/login.ejs", {message: "Logged out Successfully"});
-  });
+    res.render("pages/login.ejs", { message: "Logged out Successfully" });
+});
