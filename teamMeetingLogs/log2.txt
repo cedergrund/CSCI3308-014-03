@@ -1,0 +1,34 @@
+Meeting log 2: __ Minutes
+
+From TA Meeting: 
+  1. Need to pick up indiviual stories and roles
+  2. More progress on pages and stories from project roles
+  
+Group Meeting:
+  1. Gustav/Conlan - Start work on the user data for a profile page
+    - add a field for steam ID so it is part of the user and start using the API
+    - user statistics stories on project board
+    - profile page
+    - user portal
+  2. Pair up on stories for more progress
+    - group up on big stories etc
+  3. Make the profile page and shows the users data like achievements and etc
+  4. Getting steam id from the register page to be able to use API
+  5. Linda/Olivia work on css and plan for the pages
+    - UI
+    - TBA
+  6. Greg/Steven - SQL stuff
+    - filtering for the user data etc...
+    - game search tables
+    - show list of games and similar games
+    - TBA
+  7. User data with "users are part of this community" etc
+    - pull games that are owned an
+  8. When ranking users do it by number of hours in the game
+  9. APIs
+    - steam user id we can get list of games they own and how long they have played it and get friends list that has 
+    all their steam ids and their play time etc..
+  10. Create database
+  
+    
+  Next meeting gets demos done and have project board updated for TA meeting.
