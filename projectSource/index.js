@@ -129,6 +129,24 @@ app.get('/gamesearch', (req, res) => {
             });
         });
 });
+
+app.get('/leaderboard', (req, res) => {
+    const query = "SELECT name, developer, average_playtime, owners from games ORDER BY average_playtime DESC LIMIT 20";
+    db.any(query)
+        .then((games) => {
+            res.render("pages/leaderboard.ejs", {
+                games
+            });
+        })
+        .catch((err) => {
+            res.render("pages/leaderboard.ejs", {
+                games: [],
+                errors: true,
+                message: err.message,
+            });
+        });
+});
+
 app.get('/profile', (req, res) => {
     // var steam_id = "SELECT * FROM users WHERE username =  ORDER BY avg_rating DESC LIMIT 3;";
     // db.any(steam_id)

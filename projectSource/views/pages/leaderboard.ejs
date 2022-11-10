@@ -1,0 +1,73 @@
+<%- include ('../partials/header') %>
+    <%- include ('../partials/menu') %>
+        <main>
+            <div class="container">
+                <% if (locals.message) { %>
+                    <div class="alert alert-<%- locals.error ? 'danger' : 'success' %>" role="alert">
+                        <%= message %>
+                    </div>
+                    <% } %>
+
+                    <h1>Games With Highest Average Playtime</h1>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Developer</th>
+                                    <th scope="col">Average Playtime</th>
+                                    <th scope="col">Approximate Owners</th>
+                                </tr>
+                            </thead>
+                            <% games.forEach(function(element){%>
+                                <tr>
+                                    <td>
+                                        <%= element.name %>
+                                    </td>
+                                    <td>
+                                        <%= element.developer %>
+                                    </td>
+                                    <td>
+                                        <%= parseInt(element.average_playtime / 1440) %> days, <%= parseInt(element.average_playtime / 60) %> hours, <%=element.average_playtime % 60 %> mins
+                                    </td>
+                                    <td>
+                                        <%= parseInt(element.owners.substring(0, element.owners.indexOf('-'))) + parseInt(element.owners.substring(element.owners.indexOf('-') + 1)) / 2 %> 
+                                    </td>
+                                </tr>
+                                <% });%>
+                        </table>
+                        <br>
+                        <br>
+
+                        <h1>Games With Highest Average Playtime of Over 100,000 Owners</h1>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Developer</th>
+                                    <th scope="col">Average Playtime</th>
+                                    <th scope="col">Approximate Owners</th>
+                                </tr>
+                            </thead>
+                            <% games.forEach(function(element){%>
+                                <!-- if approximate owners is > 100,000 -->
+                                <% if ((parseInt(element.owners.substring(0, element.owners.indexOf('-'))) + parseInt(element.owners.substring(element.owners.indexOf('-') + 1)) / 2) > 100000) { %> 
+                                <tr>
+                                    <td>
+                                        <%= element.name %>
+                                    </td>
+                                    <td>
+                                        <%= element.developer %>
+                                    </td>
+                                    <td>
+                                        <%= parseInt(element.average_playtime / 1440) %> days, <%= parseInt(element.average_playtime / 60) %> hours, <%=element.average_playtime % 60 %> mins
+                                    </td>
+                                    <td>
+                                        <%= parseInt(element.owners.substring(0, element.owners.indexOf('-'))) + parseInt(element.owners.substring(element.owners.indexOf('-') + 1)) / 2 %> 
+                                    </td>
+                                </tr>
+                                <% } %>
+                                <% });%>
+                        </table>
+            </div>
+        </main>
+        <%- include ('../partials/footer') %>
