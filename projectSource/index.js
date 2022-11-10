@@ -130,6 +130,24 @@ app.get('/gamesearch', (req, res) => {
         });
 });
 
+app.post('/gamesearch', async (req, res) => {
+    const searchTerm = '%' + req.body.searchTerm + '%';
+    const query = "select * from games where name like $1 or publisher like $1;";
+    db.any(query, [searchTerm])
+        .then((games) => {
+            res.render("pages/gamesearch.ejs", {
+                games
+            });
+        })
+        .catch((err) => {
+            res.render("pages/gamesearch.ejs", {
+                games: [],
+                errors: true,
+                message: err.message,
+            });
+        });
+});
+
 app.get('/leaderboard', (req, res) => {
     const query = "SELECT name, developer, average_playtime, owners from games ORDER BY average_playtime DESC LIMIT 20";
     db.any(query)
