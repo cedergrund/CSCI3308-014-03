@@ -2,16 +2,42 @@
     <%- include ('../partials/menu') %>
     <%- include ('../partials/message') %>
 
-        <h1>Welcome to HotGamesWithFriends</h1>
-        <br>
-        <div>Here at HGWF we help you find games similar to the ones you play and compare your
-            <a href="https://steampowered.com" title="Steam" target="_blank">Steam</a> stats with your friends. Think
-            you've got
-            the most playtime
-            in
-            Terraria, let's find out.
+    <head>
+        <link rel="stylesheet" href="css/home.css">
+        <link rel="stylesheet" href="css/navbar.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="title-home">Welcome to HotGamesWithFriends!</h1>
+            <p>
+                Here at HGWF we help you find games similar to the ones you play and compare your
+                <a href="https://steampowered.com/" title="Steam" target="_blank">Steam</a> stats 
+                with your friends. Think
+                you've got the most playtime in
+                Terraria, let's find out.
+            </p>
+            <p>
+                Already a user? <a href="/login">Login Here!</a>
+            </p>
+            <p>
+                Not a user? <a href="/register">Register Here!</a>
+            </p>
+            <div class="table">
+                <div class="about-us">
+                    <thead>
+                        <tr>
+                            <p>About Us</p>
+                        </tr>
+                        <tr>
+                            <th scope="col"><img src="img/Colorado_Buffaloes_logo.svg.png" width="70" height="50" alt=""></th>
+                            <th scope="col"><img src="img/9.png" width="70" height="70" alt=""></th>
+                        </tr>
+                    </thead>
+                </div>
+            </div>
         </div>
-        <div>
-            <img src="img/Colorado_Buffaloes_logo.svg.png" alt="">
-        </div>
-        <%- include ('../partials/footer') %>
+    </body>
+    
+
+
+<%- include ('../partials/footer') %>
