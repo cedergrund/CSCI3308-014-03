@@ -6,6 +6,6 @@ h1.title-home{
 
 }
 
-.nav-item{
-    border-color: rgb(199, 68, 68);
+.navbar{
+    min-height: 30px;
 }
