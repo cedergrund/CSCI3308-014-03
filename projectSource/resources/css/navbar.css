@@ -5,3 +5,7 @@ h1.title-home{
     font-weight: bold;
 
 }
+
+.nav-item{
+    border-color: rgb(199, 68, 68);
+}

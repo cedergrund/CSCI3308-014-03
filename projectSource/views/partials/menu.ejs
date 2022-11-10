@@ -1,9 +1,17 @@
+<head>
+    
+    <link rel="stylesheet" href="css/navbar.css">
+    
+</head>
+
+
 <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
     <div class="container-fluid">
         <ul class="nav navbar-nav navbar-left" id="Logo">
             <li> 
                 <a class="navbar-brand" href="#">
                     <img src="img/HotSteam_RED.png" alt="" alt="Hotsteam" width="60" height="60">
+                    HotSteam
                 </a>
             </li>
         </ul>
@@ -20,21 +28,24 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/gamesearch">Game Search</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Leaderboard</a>
+                </li>
             </ul>
 
 
-            <div class="nav-item ml-auto dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    My Account
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="nav-link" href="/register">Register</a>
-                    <a class="nav-link" href="/login">Login</a>
-                    <a class="nav-link" href="/logout">Logout</a>
-                </div>
-                <!-- TO-DO: For Logout, add a <a> tag with an attribute href to call the '/logout API -->
+        <div class="ml-auto dropdown text-light">
+            <a class="btn btn-secondary dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                My Account
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="nav-link" href="/register">Register</a>
+                <a class="nav-link" href="/login">Login</a>
+                <a class="nav-link" href="/logout">Logout</a>
             </div>
+            <!-- TO-DO: For Logout, add a <a> tag with an attribute href to call the '/logout API -->
+        </div>
         </div>
     </div>
 </nav>
