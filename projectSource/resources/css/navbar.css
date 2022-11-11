@@ -1,0 +1,22 @@
+h1.title-home{
+    color: rgb(128, 128, 128);
+    padding-top: 35px;
+    text-align: center;
+    font-weight: bold;
+
+}
+
+.navbar{
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+
+.navbar-brand{
+    font-family: Arial !important;
+    
+}
+
+.dropdown-menu{
+    width: 1px;
+}

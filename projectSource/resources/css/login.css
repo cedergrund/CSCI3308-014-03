@@ -1,0 +1,36 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.row{
+    background: white;
+    border-radius: 30px;
+    box-shadow: 12px 12px 22px;
+}
+
+.login{
+    padding-top: 50px;
+    background: rgb(112, 131, 147);
+}
+
+.login img{
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.login h1{
+    font-size: 5rem;
+    font-weight: 700;
+    font-family: 'Pacifico', cursive;
+    text-shadow: 2px 2px #6d75b8;
+}
+
+.form-control{
+    height: 50px;
+    width: 70%;
+    border: none;
+    outline: none;
+    border-radius: 60px;
+}
