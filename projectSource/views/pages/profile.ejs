@@ -26,6 +26,7 @@ Owned Games table, currently pulling dummy data until DB is setup
     <table class="table">
       <thead>
           <tr>
+              <th scope="col"></th>
               <th scope="col">Game</th>
               <th scope="col">Developer</th>
               <th scope="col">Hours Played</th>
@@ -33,6 +34,9 @@ Owned Games table, currently pulling dummy data until DB is setup
       </thead>
       <% gameData.forEach(function(element){%>
           <tr>
+              <td>
+                <img class="w-25 h-25" style= border:1px solid #000000' src="https://logos-world.net/wp-content/uploads/2021/02/Rust-Emblem.png"></img>
+              </td>
               <td>
                   <%= element.game %>
               </td>
