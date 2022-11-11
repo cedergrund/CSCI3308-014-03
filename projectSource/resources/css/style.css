@@ -1,0 +1,28 @@
+.parent {
+    border: 1rem;
+    padding: 2rem 2rem;
+    text-align: center;
+}
+
+.center {
+    display: inline-block;
+    padding: 1rem 1rem;
+    vertical-align: middle;
+}
+
+h1.title {
+    color: rgb(62, 72, 74);
+    padding-top: 17px;
+    padding-top: 17px;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+}
+
+tr {
+    color: rgb(62, 72, 74);
+    padding-top: 3px;
+    padding-top: 3px;
+    text-align: left;
+    font-family: 'Quicksand', sans-serif;
+}
