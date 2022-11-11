@@ -1,0 +1,35 @@
+h1.title-home {
+    color: rgb(62, 72, 74);
+    padding-top: 35px;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+}
+
+p {
+    color: rgb(62, 72, 74);
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+}
+
+pH {
+    color: rgb(62, 72, 74);
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+}
+
+div.about-us {
+    color: rgb(62, 72, 74);
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+}
+
+div.register {
+    color: rgb(62, 72, 74);
+    padding-top: 35px;
+    text-align: left;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+}
