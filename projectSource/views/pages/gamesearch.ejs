@@ -7,6 +7,15 @@
                         <%= message %>
                     </div>
                     <% } %>
+                        <form action="/gamesearch" method="POST">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="searchTerm" id="searchTerm"
+                                    placeholder="Search...">
+                                <span class="input-group-btn">
+                                    <button type="submit"> Search</button>
+                                </span>
+                            </div>
+                        </form>
                         <table class="table">
                             <thead>
                                 <tr>

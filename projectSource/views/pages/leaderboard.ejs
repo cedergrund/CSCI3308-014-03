@@ -27,7 +27,7 @@
                                         <%= element.developer %>
                                     </td>
                                     <td>
-                                        <%= parseInt(element.average_playtime / 1440) %> days, <%= parseInt(element.average_playtime / 60) %> hours, <%=element.average_playtime % 60 %> mins
+                                        <%= parseInt(element.average_playtime / 1440) %> days, <%= parseInt(parseInt(element.average_playtime % 1440) / 60) %> hours, <%=element.average_playtime % 60 %> mins
                                     </td>
                                     <td>
                                         <%= parseInt(element.owners.substring(0, element.owners.indexOf('-'))) + parseInt(element.owners.substring(element.owners.indexOf('-') + 1)) / 2 %> 
@@ -59,7 +59,7 @@
                                         <%= element.developer %>
                                     </td>
                                     <td>
-                                        <%= parseInt(element.average_playtime / 1440) %> days, <%= parseInt(element.average_playtime / 60) %> hours, <%=element.average_playtime % 60 %> mins
+                                        <%= parseInt(element.average_playtime / 1440) %> days, <%= parseInt(parseInt(element.average_playtime % 1440) / 60) %> hours, <%=element.average_playtime % 60 %> mins
                                     </td>
                                     <td>
                                         <%= parseInt(element.owners.substring(0, element.owners.indexOf('-'))) + parseInt(element.owners.substring(element.owners.indexOf('-') + 1)) / 2 %> 

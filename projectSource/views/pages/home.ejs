@@ -2,18 +2,58 @@
     <%- include ('../partials/menu') %>
     <%- include ('../partials/message') %>
 
-    <div class="container">
-        <h1 class="title-home">Welcome to HotGamesWithFriends</h1>
-        <br>
-            <div>Here at HGWF we help you find games similar to the ones you play and compare your
-                <a href="https://steampowered.com" title="Steam" target="_blank">Steam</a> stats with your friends. Think
-                you've got
-                the most playtime
-                in
+    <head>
+        <link rel="stylesheet" href="css/home.css">
+        <link rel="stylesheet" href="css/navbar.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="title-home">Welcome to HotGamesWithFriends!</h1>
+            <p>
+                Here at HGWF we help you find games similar to the ones you play and compare your
+                <a href="https://steampowered.com/" title="Steam" target="_blank">Steam</a> stats 
+                with your friends. Think
+                you've got the most playtime in
                 Terraria, let's find out.
+            </p>
+            <p>
+                Already a user? <a href="/login">Login Here!</a>
+            </p>
+            <p>
+                Not a user? <a href="/register">Register Here!</a>
+            </p>
+            <div class="table">
+                <div class="about-us">
+                    <thead>
+                        <tr>
+                            <th>
+                                <h1>About Us</h1>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <p>
+                                    What kind of features does HotSteamWithFriends have?
+                                     - User and Game stats for a given game of your choice!
+                                     - Leaderboards and overall playtime in certain games
+                                     - Similar games to the one that is searched!
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>
+                                    This project is brought to you by HotSteam! This is a group project for 
+                                     CSCI-3308 Software Development and Tools.
+                                </p>
+                                <th scope="col"><img src="img/Colorado_Buffaloes_logo.svg.png" width="70" height="50" alt=""></th>
+                                <th scope="col"><img src="img/9.png" width="65" height="65" alt=""></th>
+                            </td>
+                        </tr>
+                    </tbody>
+                </div>
             </div>
-        <div>
-            <img src="img/Colorado_Buffaloes_logo.svg.png" alt="">
         </div>
-    </div>
         <%- include ('../partials/footer') %>
