@@ -25,3 +25,11 @@ div.about-us {
     font-weight: bold;
     font-family: 'Quicksand', sans-serif;
 }
+
+div.register {
+    color: rgb(62, 72, 74);
+    padding-top: 35px;
+    text-align: left;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+}
