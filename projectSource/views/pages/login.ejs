@@ -2,26 +2,38 @@
 
 
 <main>
-  <div class="container">
-    <h1>Login:</h1>
-    <form action = "/login" method = "POST">
-        <!-- Username Input input -->
-        <div class="form-outline mb-3">
-          <label class="form-label" for="username">Username</label>
-          <input type="text" id="username" class="form-control" name = "username"/>
-          <small class="form-text text-muted">Input your username here</small>
-        </div>
+  <section class = "login py-5 bg-light">
+    <div class="container">
+      <div class = "row g-0">
+        <div class = "col-lg-5">
+          <img src="img/game.png" class="img-fluid" alt = "">
+        </div>  
+        <div class="col-lg-7 text-center py-5">
+            <h1>Login:</h1>
+              <form action = "/login" method = "POST">
+                  <div class="form-row py-3 pt-5">  
+                        <!-- Username Input input -->
+                        <div class="offset-1 col-lg-10">
+                            <label class="form-label" for="username"></label>
+                            <input type="text" id="username" class="form-control px-3" name = "username" placeholder="Username">
+                        </div>
 
-        <div class="form-outline mb-3">
-          <label for="inputPassword3" class="form-label">Password</label>
-            <input type="password" name="password" class="form-control" id="inputPassword3 password">
-            <small class="form-text text-muted">Input your password here</small>
-        </div>
-      
-        <!-- Submit button -->
-        <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
-      </form>
-  </div>
+                        <div class="offset-1 col-lg-10">
+                            <label for="inputPassword3" class="form-label"></label>
+                            <input type="password" name="password" class="form-control px-3" id="inputPassword3 password" placeholder="Password">
+                        </div>
+                        <div class="form-row py-3">
+                          <!-- Submit button -->
+                          <div class="offset-1 col-lg-10">
+                              <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+                          </div>
+                        </div>
+                  </div> 
+              </form>
+        </div>        
+      </div>
+    </div>
+  </section>
 </main>
 
 <%- include ('../partials/footer') %>

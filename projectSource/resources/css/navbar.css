@@ -7,5 +7,16 @@ h1.title-home{
 }
 
 .navbar{
-    min-height: 30px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+
+.navbar-brand{
+    font-family: Arial !important;
+    
+}
+
+.dropdown-menu{
+    width: 1px;
 }
