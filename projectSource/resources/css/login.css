@@ -4,10 +4,13 @@
     box-sizing: border-box;
 }
 
+
 .row{
     background: white;
     border-radius: 30px;
     box-shadow: 12px 12px 22px;
+    
+    
 }
 
 .login{
@@ -24,7 +27,8 @@
     font-size: 5rem;
     font-weight: 700;
     font-family: 'Pacifico', cursive;
-    text-shadow: 2px 2px #6d75b8;
+    color:rgb(130, 62, 62);
+    text-shadow: 2px 2px #fe5c38;
 }
 
 .form-control{
