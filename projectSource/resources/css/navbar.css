@@ -5,8 +5,9 @@
 
 
 .navbar-brand{
-    font-family: Arial !important;
-    
+    font-family:'Quicksand', sans-serif  !important;
+    color: white;
+    text-shadow: 2px 2px 5px rgb(220, 32, 32), 0 0 30px rgb(255, 102, 0), 0 0 10px rgb(254, 60, 31);
 }
 
 .dropdown-menu{
