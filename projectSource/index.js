@@ -98,7 +98,8 @@ app.post('/login', async (req, res) => {
             if (match) {
                 req.session.user = {
                     api_key: process.env.API_KEY,
-                    // steam_id: 
+                    steam_id: user.steam_id,
+                    username: user.username,
                 };
                 req.session.save();
                 res.redirect('/profile');
@@ -148,17 +149,8 @@ app.get('/leaderboard', (req, res) => {
 });
 
 app.get('/profile', (req, res) => {
-    // var steam_id = "SELECT * FROM users WHERE username =  ORDER BY avg_rating DESC LIMIT 3;";
-    // db.any(steam_id)
-    //   .then(function (rows) {
-    //     res.send(rows)
-    //   })
-    //   .catch(function (err) {
-    //     res.send(err)
-    //     console.log("didn't work");
-    //     res.render('pages/home.ejs', {results: [], error: true});
-    //   });
 
+    const name = req.session.user.username;
     axios({
         url: `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002`,
         method: 'GET',
@@ -171,15 +163,15 @@ app.get('/profile', (req, res) => {
         .then(results => {
             console.log(results.data); // the results will be displayed on the terminal if the docker containers are running
             if (results.data.page.totalElements == 0) {
-                res.render('pages/home.ejs', { results: [], error: true });
+                res.render('pages/profile.ejs', { results: [],name, error: true });
             }
             else {
-                res.render('pages/home.ejs', { results, error: false });
+                console.log("gang");
+                res.render('pages/profile.ejs', { results, name, error: false });
             }
         })
         .catch(error => {
-            console.log("didn't work");
-            res.render('pages/home.ejs', { results: [], error: true });
+            res.render('pages/profile.ejs', { results: [], name, error: true });
         })
 });
 
