@@ -6,6 +6,26 @@ const session = require('express-session');
 const bcrypt = require('bcrypt');
 const axios = require('axios');
 
+//Test game data
+//TODO: replace useage of this with real user data when API and database schema is done
+const gameData = [
+    {
+        game:"Rust",
+        developer:"Facepunch",
+        playtime:302
+    },
+    {
+        game:"CSGO",
+        developer:"Valve",
+        playtime:450
+    },
+    {
+        game:"Apex Legends",
+        developer:"EA",
+        playtime:97
+    }
+]
+
 
 // database configuration
 const dbConfig = {
@@ -97,7 +117,6 @@ app.post('/login', async (req, res) => {
             const match = await bcrypt.compare(req.body.password, user.password); //await is explained in #8
             if (match) {
                 req.session.user = {
-                    api_key: process.env.API_KEY,
                     steam_id: user.steam_id,
                     username: user.username,
                 };
@@ -156,21 +175,22 @@ app.get('/profile', (req, res) => {
         method: 'GET',
         dataType: 'json',
         params: {
-            "key": req.session.user.api_key,
+            "key": process.env.STEAM_API_KEY,
             "steamids": req.session.user.steam_id,
         }
     })
         .then(results => {
-            console.log(results.data); // the results will be displayed on the terminal if the docker containers are running
-            if (results.data.page.totalElements == 0) {
-                res.render('pages/profile.ejs', { results: [],name, error: true });
+            console.log("results: " + JSON.stringify(results.data)); // the results will be displayed on the terminal if the docker containers are running
+            if (results.data.response.players.length == 0) {
+                res.render('pages/profile.ejs', { results: [],name, gameData:[],error: true });
             }
             else {
                 console.log("gang");
-                res.render('pages/profile.ejs', { results, name, error: false });
+                res.render('pages/profile.ejs', { results:results.data.response.players, gameData, name, error: false });
             }
         })
         .catch(error => {
+            console.log(error);
             res.render('pages/profile.ejs', { results: [], name, error: true });
         })
 });
@@ -179,3 +199,4 @@ app.get("/logout", (req, res) => {
     req.session.destroy();
     res.render("pages/login.ejs", { message: "Logged out Successfully" });
 });
+

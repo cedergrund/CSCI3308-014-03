@@ -4,10 +4,49 @@
 
 <main>
   <div class="container">
-    <h1>Welcome, <%- name _%>!</h1>
+    <h1>Welcome back, <%=results[0].personaname%>!</h1>
 
+    <div>
 
-      
+    </div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+          <img style='border:1px solid #000000' src=<%= results[0].avatarfull%>></img>
+
+        </div>
+        <div class="col-xs-6">
+          <a href=<%=results[0].profileurl%>>Profile URL</a>
+        </div>
+    </div>
+</div>
+
+<!--
+Owned Games table, currently pulling dummy data until DB is setup
+-->
+    <table class="table">
+      <thead>
+          <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Developer</th>
+              <th scope="col">Hours</th>
+          </tr>
+      </thead>
+      <% gameData.forEach(function(element){%>
+          <tr>
+              <td>
+                  <%= element.game %>
+              </td>
+              <td>
+                  <%= element.developer %>
+              </td>
+              <td>
+                  <%= parseInt(element.playtime) %> hours
+              </td>
+          </tr>
+          <% });%>
+  </table>
+
   </div>
 </main>
 
