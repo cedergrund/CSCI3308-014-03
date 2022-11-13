@@ -1,10 +1,9 @@
 *{
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
+    
     
 }
-
 
 .row{
     background: rgb(85, 93, 100);
@@ -14,18 +13,14 @@
     
 }
 
-.login{
+.register{
     padding-top: 50px;
     background: rgb(49, 54, 59);
     
 }
 
-.login img{
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-}
 
-.login h1{
+.register h1{
     font-size: 6rem;
     font-weight: 700;
     font-family: 'Pacifico', cursive;
@@ -44,9 +39,12 @@
     
 }
 
+.formHelp{
+    color: rgb(232, 232, 232);
+}
 
 .btn1{
-    height: 50px;
+    height: 45px;
     width: 32%;
     border: none;
     outline: none;
@@ -64,4 +62,21 @@
     transition: 0.4s;
 }
 
+.btn2{
+    height: 35px;
+    width: 15%;
+    border: none;
+    outline: none;
+    border-radius: 60px;
+    font-weight: 600;
+    background: #f87732;
+    color: white;
+    box-shadow: 33px 27px 67px -14px rgba(0,0,0,0.8);
+    -webkit-box-shadow: 33px 27px 67px -14px rgba(0,0,0,0.8);
+    -moz-box-shadow: 33px 27px 67px -14px rgba(0,0,0,0.8);
+}
 
+.btn2:hover{
+    background: rgb(239, 142, 68);
+    transition: 0.4s;
+}

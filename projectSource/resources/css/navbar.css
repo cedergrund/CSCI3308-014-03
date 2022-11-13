@@ -1,16 +1,27 @@
 .navbar{
     padding-top: 3px;
     padding-bottom: 3px;
+    background-image: linear-gradient(-90deg, #e57f2c, #e02929 );
 }
+
+.btndrop{
+    background-image: linear-gradient(-90deg, #e57f2c);
+    outline: transparent;
+}
+
 
 
 .navbar-brand{
-    font-family:'Quicksand', sans-serif  !important;
+    padding-top: 5rem;
+    font-size: 24px;
+    font-family: 'Pacifico', cursive  !important;
     color: white;
-    text-shadow: 2px 2px 5px rgb(220, 32, 32), 0 0 30px rgb(255, 102, 0), 0 0 10px rgb(254, 60, 31);
+    text-shadow: 2px 2px 20px rgb(246, 105, 34), 0 0 30px rgb(255, 129, 45), 0 0 10px rgb(255, 115, 21);
+    
 }
 
-.dropdown-menu{
+.dropmenu{
     width: 1px;
+    background: #e57f2c;
     
 }

@@ -7,41 +7,59 @@
   <link rel="stylesheet" href="css/navbar.css">
 </head>
 <main>
-  <div class="register container">
-    <h1>Register:</h1>
-    <form action="/register" method="post">
-        <div class="form-outline mb-3">
-          <label class="form-label" for="email">Email address</label>
-          <input type="text" id="email" required class="form-control" pattern = ".+(@).+" name = "email" />
-          <small class="form-text text-muted">Input your email here</small>
-        </div>
-        
-        <div class="form-outline mb-3">
-          <label class="form-label" for="username">Username</label>
-          <input type="text" id="username" required class="form-control" name = "username"/>
-          <small class="form-text text-muted">Input your username here</small>
-        </div>
+  <section class = "login py-5">
+    <div class="container"> 
+      <div class = "row g-0">
+        <div class="col-lg-7 text-center py-5">
+          <h1>Register:</h1>
+              <form action="/register" method="post">
+                  <div class="form-row py-3 pt-4">  
+                      <!-- Username Input input -->
+                      <div class="text_field offset-1 col-lg-10">
+                        <label class="form-label" for="email"></label>
+                        <input type="text" id="email" required class="form-control" pattern = ".+(@).+" name = "email" placeholder="Email address"/>
+                        <small class="formHelp ">Input your email here</small>
+                      </div>
 
-        <div class="form-outline mb-3">
-          <label class="form-label" for="id">Steam ID</label>
-          <input type="text" id="steam_id" required class="form-control" name = "steam_id"/>
-          <small class="form-text text-muted">Input your Steam ID here</small>
-        </div>
+                      <div class="text_field offset-1 col-lg-10">
+                        <label class="form-label" for="username"></label>
+                        <input type="text" id="username" required class="form-control" name = "username" placeholder="Username"/>
+                        <small class="formHelp">Input your username here</small>
+                      </div>
 
-        <div class="form-outline mb-3">
-          <label for="inputPassword3" class="form-label">Password</label>
-          <input type="password" required name="password" class="form-control" id="inputPassword3 password">
-          <small class="form-text text-muted">Input your password here</small>
-        </div>
+                      <div class="text_field offset-1 col-lg-10">
+                        <label class="form-label" for="id"></label>
+                        <input type="text" id="steam_id" required class="form-control" name = "steam_id" placeholder="Steam ID"/>
+                        <small class="formHelp">Input your Steam ID here</small>
+                      </div>
 
-        <button type="submit" class="btn btn-primary btn-block mb-4">Register</button>
-    </form>
-    <form action="/login" method="post">
-        <p class="text-center text-muted">Already have an account? 
-            <button type="submit" class="btn btn-link fw-bold text-body link" >Login Here</button>
-        </p>
-    </form>
-  </div>
+                      <div class="text_field offset-1 col-lg-10">
+                        <label for="inputPassword3" class="form-label"></label>
+                        <input type="password" required name="password" class="form-control" id="inputPassword3 password" placeholder="Password">
+                        <small class="formHelp">Input your password here</small>
+                      </div>
+
+                      <div class="form-row py-3 pt-4">
+                          <!-- Submit button -->
+                          <div class="offset-1 col-lg-10">
+                            <button type="submit" class="btn1 btn-block mb-4">Register</button>
+                          </div>
+                      </div>  
+                  </div> 
+              </form>
+              <form action="/login" method="post">
+                <p class="formHelp text-center">Already have an account? 
+                    <button type="submit" class="btn2" >Login Here</button>
+                </p>
+              </form>
+        </div>    
+      </div>     
+    </div>
+  </section>
 </main>
+
+
+
+
 
 <%- include ('../partials/footer') %>
