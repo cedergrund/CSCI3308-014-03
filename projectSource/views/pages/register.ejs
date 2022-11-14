@@ -7,44 +7,41 @@
   <link rel="stylesheet" href="css/navbar.css">
 </head>
 <main>
-  <section class = "login py-5">
+  <section class = "register py-5">
     <div class="container"> 
       <div class = "row g-0">
-        <div class="col-lg-7 text-center py-5">
+        <div class="text-center py-5">
           <h1>Register:</h1>
               <form action="/register" method="post">
-                  <div class="form-row py-3 pt-4">  
+                  <div class="form-row py-2 pt-4">  
                       <!-- Username Input input -->
-                      <div class="text_field offset-1 col-lg-10">
+                      <div class="text_field offset-2 col-lg-8">
                         <label class="form-label" for="email"></label>
-                        <input type="text" id="email" required class="form-control" pattern = ".+(@).+" name = "email" placeholder="Email address"/>
-                        <small class="formHelp ">Input your email here</small>
+                        <input type="text" id="email" required class="form-inputs form-control" pattern = ".+(@).+" name = "email" placeholder="Email address"/>
                       </div>
 
-                      <div class="text_field offset-1 col-lg-10">
+                      <div class="text_field offset-2 col-lg-8 pt-2">
                         <label class="form-label" for="username"></label>
-                        <input type="text" id="username" required class="form-control" name = "username" placeholder="Username"/>
-                        <small class="formHelp">Input your username here</small>
+                        <input type="text" id="username" required class="form-inputs form-control" name = "username" placeholder="Username"/>
                       </div>
 
-                      <div class="text_field offset-1 col-lg-10">
+                      <div class="text_field offset-2 col-lg-8 pt-2">
                         <label class="form-label" for="id"></label>
-                        <input type="text" id="steam_id" required class="form-control" name = "steam_id" placeholder="Steam ID"/>
-                        <small class="formHelp">Input your Steam ID here</small>
+                        <input type="text" id="steam_id" required class="form-inputs form-control" name = "steam_id" placeholder="Steam ID"/>
                       </div>
 
-                      <div class="text_field offset-1 col-lg-10">
+                      <div class="text_field offset-2 col-lg-8 pt-2">
                         <label for="inputPassword3" class="form-label"></label>
-                        <input type="password" required name="password" class="form-control" id="inputPassword3 password" placeholder="Password">
-                        <small class="formHelp">Input your password here</small>
+                        <input type="password" required name="password" class="form-inputs form-control" id="inputPassword3 password" placeholder="Password">
                       </div>
 
-                      <div class="form-row py-3 pt-4">
+                      <div class="form-row pt-5">
                           <!-- Submit button -->
                           <div class="offset-1 col-lg-10">
                             <button type="submit" class="btn1 btn-block mb-4">Register</button>
                           </div>
                       </div>  
+
                   </div> 
               </form>
               <form action="/login" method="post">
