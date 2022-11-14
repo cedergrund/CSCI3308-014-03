@@ -12,14 +12,13 @@
 
 
 .navbar-brand{
-    padding-top: 5rem;
     font-size: 24px;
     font-family: 'Pacifico', cursive  !important;
     color: rgb(255, 255, 255);
-    text-shadow: 2px 2px 20px rgb(246, 105, 34), 0 0 30px rgb(255, 129, 45), 0 0 10px rgb(255, 115, 21);
+    text-shadow: 2px 2px 20px rgb(255, 18, 18), 0 0 30px rgb(255, 129, 45), 0 0 10px rgb(255, 115, 21);
 }
 
 .dropmenu{
-    width: 1px;
     background: #e57f2c;
 }
+

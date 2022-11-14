@@ -1,7 +1,7 @@
 *{
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
+    
     
 }
 
@@ -10,7 +10,9 @@
     background: rgb(85, 93, 100);
     border-radius: 30px;
     box-shadow: 12px 12px 22px;
-    
+    box-shadow: 8px 4px 11px 4px rgba(0,0,0,0.45);
+    -webkit-box-shadow: 8px 4px 11px 4px rgba(0,0,0,0.45);
+    -moz-box-shadow: 8px 4px 11px 4px rgba(0,0,0,0.45);
     
 }
 
@@ -38,14 +40,14 @@
 .login .form-inputs{
     height: 49px;
     border-radius: 60px;
-    box-shadow: 33px 27px 67px -14px rgba(0,0,0,0.8);
-    -webkit-box-shadow: 33px 27px 67px -14px rgba(0,0,0,0.8);
-    -moz-box-shadow: 33px 27px 67px -14px rgba(0,0,0,0.8);
+    box-shadow: 8px 4px 11px 4px rgba(0,0,0,0.45);
+    -webkit-box-shadow: 8px 4px 11px 4px rgba(0,0,0,0.45);
+    -moz-box-shadow: 8px 4px 11px 4px rgba(0,0,0,0.45);
     
 }
 
 
-.btn1{
+.login .btn1{
     height: 50px;
     width: 32%;
     border: none;
@@ -54,10 +56,11 @@
     font-weight: 600;
     background: #f87732;
     color: white;
-    box-shadow: 33px 27px 67px -14px rgba(0,0,0,0.8);
-    -webkit-box-shadow: 33px 27px 67px -14px rgba(0,0,0,0.8);
-    -moz-box-shadow: 33px 27px 67px -14px rgba(0,0,0,0.8);
+    box-shadow: 8px 4px 11px -5px rgba(0,0,0,0.45);
+    -webkit-box-shadow: 8px 4px 11px -5px rgba(0,0,0,0.45);
+    -moz-box-shadow: 8px 4px 11px -5px rgba(0,0,0,0.45);
 }
+
 
 .btn1:hover{
     background: rgb(255, 135, 43);

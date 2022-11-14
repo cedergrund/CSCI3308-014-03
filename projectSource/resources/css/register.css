@@ -12,16 +12,18 @@
 }
 
 .register .row{
-    background: rgb(85, 93, 100);
+    background: rgb(44, 52, 59);
     border-radius: 30px;
-    box-shadow: 12px 12px 22px;
-    
+    box-shadow: 10px 10px 15px;
+    box-shadow: 8px 4px 11px 4px rgba(0,0,0,0.45);
+    -webkit-box-shadow: 8px 4px 11px 4px rgba(0,0,0,0.45);
+    -moz-box-shadow: 8px 4px 11px 4px rgba(0,0,0,0.45);
     
 }
 
 .register{
     padding-top: 50px;
-    background: rgb(49, 54, 59);
+    background: rgb(27, 32, 37);
 }
 
 
@@ -38,17 +40,17 @@
     height: 49px;
     padding: 20px;
     border-radius: 60px;
-    box-shadow: 33px 27px 67px -14px rgba(0,0,0,0.8);
-    -webkit-box-shadow: 33px 27px 67px -14px rgba(0,0,0,0.8);
-    -moz-box-shadow: 33px 27px 67px -14px rgba(0,0,0,0.8);
+    box-shadow: 8px 4px 11px 4px rgba(0,0,0,0.45);
+    -webkit-box-shadow: 8px 4px 11px 4px rgba(0,0,0,0.45);
+    -moz-box-shadow: 8px 4px 11px 4px rgba(0,0,0,0.45);
 }
 
-.formHelp{
-    color: rgb(232, 232, 232);
+.register .formHelp{
+    color: rgb(134, 134, 134);
 }
 
 
-.btn1{
+.register .btn1{
     height: 45px;
     width: 32%;
     border: none;
@@ -57,12 +59,12 @@
     font-weight: 600;
     background: #f87732;
     color: white;
-    box-shadow: 33px 27px 67px -14px rgba(0,0,0,0.8);
-    -webkit-box-shadow: 33px 27px 67px -14px rgba(0,0,0,0.8);
-    -moz-box-shadow: 33px 27px 67px -14px rgba(0,0,0,0.8);
+    box-shadow: 8px 4px 11px -5px rgba(0,0,0,0.45);
+    -webkit-box-shadow: 8px 4px 11px -5px rgba(0,0,0,0.45);
+    -moz-box-shadow: 8px 4px 11px -5px rgba(0,0,0,0.45);
 }
 
-.btn1:hover{
+.register .btn1:hover{
     background: rgb(255, 135, 43);
     transition: 0.4s;
 }
@@ -76,9 +78,9 @@
     font-weight: 600;
     background: #f87732;
     color: white;
-    box-shadow: 33px 27px 67px -14px rgba(0,0,0,0.8);
-    -webkit-box-shadow: 33px 27px 67px -14px rgba(0,0,0,0.8);
-    -moz-box-shadow: 33px 27px 67px -14px rgba(0,0,0,0.8);
+    box-shadow: 8px 4px 11px -5px rgba(0,0,0,0.45);
+    -webkit-box-shadow: 8px 4px 11px -5px rgba(0,0,0,0.45);
+    -moz-box-shadow: 8px 4px 11px -5px rgba(0,0,0,0.45);
 }
 
 .btn2:hover{
