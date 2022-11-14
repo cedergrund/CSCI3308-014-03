@@ -26,3 +26,19 @@ tr {
     text-align: left;
     font-family: 'Quicksand', sans-serif;
 }
+
+footer.footer {
+    color: rgb(62, 72, 74);
+}
+
+div.footer {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+  }
+
+

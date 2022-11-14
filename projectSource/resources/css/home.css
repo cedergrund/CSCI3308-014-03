@@ -1,35 +1,109 @@
 h1.title-home {
-    color: rgb(62, 72, 74);
+    color: rgb(255, 255, 255);
     padding-top: 35px;
     text-align: center;
     font-weight: bold;
     font-family: 'Quicksand', sans-serif;
+}
+
+.content {
+    color: rgb(255, 255, 255);
+    padding-top: 35px;
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Pacifico', 'cursive';
 }
 
 p {
-    color: rgb(62, 72, 74);
+    color: rgb(0, 0, 0);
     text-align: center;
     font-family: 'Quicksand', sans-serif;
 }
 
-pH {
-    color: rgb(62, 72, 74);
+.banner-image {
+    background-image: url(https://jooinn.com/images/fire-174.png);
+    background-size: cover;
+    }
+
+.p-5 {
+    background-color: rgb(27, 32, 37);
+}
+.card-deck {
+    background-color: rgb(27, 32, 37);
+}
+.card {
+    margin: 5px;
+    background-color: rgb(27, 32, 37);
+    height: 350px;
+    width: 250px;
+    padding: 5px;
     text-align: center;
     font-weight: bold;
+    font-family: 'Pacifico', 'cursive';
+}
+
+.dropdown-menu {
+    background-color: rgb(255, 255, 255);
+}
+
+.navbar-brand {
+    margin: 10px;
+    padding-top: 15px;
+    font-size: 10rem;
+    font-weight: 700;
+    font-family: 'Pacifico', 'cursive';
+}
+
+.navbar-nav {
+    color: rgb(255, 255, 255);
+    text-align: center;
     font-family: 'Quicksand', sans-serif;
 }
 
-div.about-us {
-    color: rgb(62, 72, 74);
-    text-align: center;
-    font-weight: bold;
-    font-family: 'Quicksand', sans-serif;
+.h1 {
+    margin: 10px;
+    padding-top: 15px;
+    font-size: 10rem;
+    font-weight: 700;
+    font-family: 'Pacifico', 'cursive';
 }
 
-div.register {
-    color: rgb(62, 72, 74);
-    padding-top: 35px;
-    text-align: left;
-    font-weight: bold;
-    font-family: 'Quicksand', sans-serif;
+.d-flex {
+    background-color: rgb(62, 72, 74);
+}
+.footer {
+    background-color: rgb(62, 72, 74);
+}
+
+.text-center1 {
+    background-color: rgb(16, 60, 104);
+}
+
+.row {
+    background-color: rgb(62, 72, 74);
+}
+
+.col-md-3 {
+    background-color: rgb(62, 72, 74);
+}
+
+.me-5 {
+   color: rgb(255, 255, 255);
+   text-align: center;
+}
+
+
+.text {
+    color: rgb(255, 255, 255);
+    margin: 10px;
+    padding-top: 15px;
+    font-size: 30px;
+    font-weight: 700;
+    font-family: 'Pacifico', 'cursive';
+}
+
+.col-lg-3 {
+    padding-top: 15px;
+    padding-bottom: 15;
 }
