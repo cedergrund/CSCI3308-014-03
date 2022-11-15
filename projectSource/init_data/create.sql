@@ -3,7 +3,8 @@ CREATE TABLE users(
  username VARCHAR(50) PRIMARY KEY,
  email VARCHAR(50) NOT NULL,
  steam_id VARCHAR(50) NOT NULL,
- password CHAR(60) NOT NULL
+ password CHAR(60) NOT NULL,
+ country VARCHAR(50) NOT NULL
 );
 
 DROP TABLE IF EXISTS games;
@@ -27,3 +28,18 @@ CREATE TABLE games(
     owners TEXT,
     price DECIMAL
 );
+
+DROP TABLE IF EXISTS users_to_games;
+CREATE TABLE users_to_games(
+ username VARCHAR(50),
+ appid INT,
+ name VARCHAR(100),
+ play_time INT,
+ last_played INT
+);
+
+ALTER TABLE users_to_games
+ADD CONSTRAINT username FOREIGN KEY (username) REFERENCES users (username);
+
+ALTER TABLE users_to_games
+ADD CONSTRAINT appid FOREIGN KEY (appid) REFERENCES games (appid);
