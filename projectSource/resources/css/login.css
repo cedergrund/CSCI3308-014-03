@@ -8,6 +8,7 @@
 
 
 .row{
+    
     background: rgb(44, 52, 59);
     border-radius: 30px;
     box-shadow: 12px 12px 22px;
@@ -65,8 +66,10 @@
 
 
 .btn1:hover{
-    background: rgb(255, 135, 43);
+    background: rgb(255, 59, 59);
     transition: 0.4s;
 }
 
-
+.demoLogin{
+    padding-top: 0;
+}

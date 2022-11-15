@@ -1,13 +1,8 @@
-*{
-    padding: 0;
-    margin: 0;
-    
-    
-}
 
 .register .container{
     padding-left: 356px;
     padding-right: 356px;
+    
     
 }
 
@@ -18,7 +13,6 @@
     box-shadow: 8px 4px 11px 4px rgba(0,0,0,0.45);
     -webkit-box-shadow: 8px 4px 11px 4px rgba(0,0,0,0.45);
     -moz-box-shadow: 8px 4px 11px 4px rgba(0,0,0,0.45);
-    
 }
 
 .register{
