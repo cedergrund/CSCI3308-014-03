@@ -8,43 +8,42 @@
         <ul class="nav navbar-nav navbar-left" id="Logo">
             <li> 
                 <a class="navbar-brand" href="#">
-                    <img src="img/HotSteam_RED.png" alt="" alt="Hotsteam" width="51" height="51">
-                    HotSteam
+                    <img src="img/navbar_Logo.png" alt="" alt="Hotsteam" width="55" height="52">
+                    Hot Steam
                 </a>
             </li>
         </ul>
-        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-collapse"
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-collapse"
             aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
     
         <div class="collapse navbar-collapse" id="navbar-collapse">
-            <ul class="navbar-nav">
+            <ul class="ms-auto navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/gamesearch">Game Search</a>
+                    <a class="nav-link active" href="/gamesearch">Game Search</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/leaderboard">Leaderboard</a>
+                    <a class="nav-link active" href="/leaderboard">Leaderboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/profile">Profile</a>
+                    <a class="nav-link active" href="/profile">Profile</a>
                 </li>
-            
             </ul>
 
-            <div class="dropDown ms-auto dropdown text-light">
-                <a class="btn dropdown-toggle btn-dark " href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            <div class="dropDown dropdown text-light">    
+                <a class="btndrop btn dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     My Account
                 </a>
-                <div class="dropdown-menu dropdown-menu-dark " aria-labelledby="navbarDropdown">
+                <ul class="dropmenu dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/register">Register</a>
                     <a class="dropdown-item" href="/login">Login</a>
                     <a class="dropdown-item" href="/logout">Logout</a>
-                </div>
+                </ul>
                 <!-- TO-DO: For Logout, add a <a> tag with an attribute href to call the '/logout API -->
             </div>
         </div>

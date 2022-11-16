@@ -2,43 +2,57 @@
 <%- include ('../partials/menu') %>
 <%- include ('../partials/message') %>
 
-<head>
-  <link rel="stylesheet" href="css/home.css">
-  <link rel="stylesheet" href="css/navbar.css">
-</head>
 <main>
-  <div class="register container">
-    <h1>Register:</h1>
-    <form action="/register" method="post">
-        <div class="form-outline mb-3">
-          <label class="form-label" for="email">Email address</label>
-          <input type="text" id="email" required class="form-control" pattern = ".+(@).+" name = "email" placeholder="Enter your email"/>
-        </div>
-        
-        <div class="form-outline mb-3">
-          <label class="form-label" for="username">Username</label>
-          <input type="text" id="username" required class="form-control" name = "username" placeholder="Enter a username"/>
-        </div>
+  <section class = "register py-5">
+    <div class="container" > 
+      <div class = "row g-0 ">
+        <div class="text-center py-5">
+          <h1>Register:</h1>
+              <form action="/register" method="post">
+                  <div class="form-row py-2 pt-4">  
+                      <!-- Username Input input -->
+                      <div class="text_field offset-2 col-lg-8">
+                        <label class="form-label" for="email"></label>
+                        <input type="text" id="email" required class="form-inputs form-control" pattern = ".+(@).+" name = "email" placeholder="Email address"/>
+                      </div>
 
-        <div class="form-outline mb-3">
-          <label for="inputPassword3" class="form-label">Password</label>
-          <input type="password" required name="password" class="form-control" id="inputPassword3 password" placeholder="Enter a password">
-        </div>
+                      <div class="text_field offset-2 col-lg-8 pt-2">
+                        <label class="form-label" for="username"></label>
+                        <input type="text" id="username" required class="form-inputs form-control" name = "username" placeholder="Username"/>
+                      </div>
 
-        <div class="form-outline mb-3">
-          <label class="form-label" for="id">Steam ID</label>
-          <input type="text" id="steam_id" required class="form-control" name = "steam_id" placeholder="Enter your Steam ID (76561198092971111)"/>
-          <a href="https://steamid.io/">Find Your Steam ID Here</a>
-        </div>
+                      <div class="text_field offset-2 col-lg-8 pt-2">
+                        <label class="form-label" for="id"></label>
+                        <input type="text" id="steam_id" required class="form-inputs form-control" name = "steam_id" placeholder="Steam ID"/>
+                      </div>
 
-        <button type="submit" class="btn btn-primary btn-block mb-4">Register</button>
-    </form>
-    <form action="/login" method="post">
-        <p class="text-center text-muted">Already have an account? 
-            <button type="submit" class="btn btn-link fw-bold text-body link" >Login Here</button>
-        </p>
-    </form>
-  </div>
+                      <div class="text_field offset-2 col-lg-8 pt-2">
+                        <label for="inputPassword3" class="form-label"></label>
+                        <input type="password" required name="password" class="form-inputs form-control" id="inputPassword3 password" placeholder="Password">
+                      </div>
+
+                      <div class="form-row pt-5">
+                          <!-- Submit button -->
+                          <div class="offset-1 col-lg-10">
+                            <button type="submit" class="btn1 btn-block mb-4">Register</button>
+                          </div>
+                      </div>  
+
+                  </div> 
+              </form>
+              <form action="/login" method="post">
+                <p class="formHelp text-center">Already have an account? 
+                    <button type="submit" class="btn2" >Login Here</button>
+                </p>
+              </form>
+        </div>    
+      </div>     
+    </div>
+  </section>
 </main>
+
+
+
+
 
 <%- include ('../partials/footer') %>

@@ -1,35 +1,27 @@
-*{
-    padding: 0;
-    margin: 0;
+
+.register .container{
+    padding-left: 356px;
+    padding-right: 356px;
     
     
 }
 
-
-
-.row{
-    
+.register .row{
     background: rgb(44, 52, 59);
     border-radius: 30px;
-    box-shadow: 12px 12px 22px;
+    box-shadow: 10px 10px 15px;
     box-shadow: 8px 4px 11px 4px rgba(0,0,0,0.45);
     -webkit-box-shadow: 8px 4px 11px 4px rgba(0,0,0,0.45);
     -moz-box-shadow: 8px 4px 11px 4px rgba(0,0,0,0.45);
-    
 }
 
-.login{
-
+.register{
+  
     background: rgb(27, 32, 37);
-    
 }
 
-.login img{
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-}
 
-.login h1{
+.register h1{
     font-size: 6rem;
     font-weight: 700;
     font-family: 'Pacifico', cursive;
@@ -38,20 +30,24 @@
 }
 
 
-
-.login .form-inputs{
+.register .form-inputs{
     height: 49px;
     padding: 20px;
     border-radius: 60px;
     box-shadow: 8px 4px 11px 4px rgba(0,0,0,0.45);
     -webkit-box-shadow: 8px 4px 11px 4px rgba(0,0,0,0.45);
     -moz-box-shadow: 8px 4px 11px 4px rgba(0,0,0,0.45);
-    
 }
 
 
-.login .btn1{
-    height: 50px;
+.register .formHelp{
+    color: rgb(134, 134, 134);
+}
+
+
+
+.register .btn1{
+    height: 45px;
     width: 32%;
     border: none;
     outline: none;
@@ -64,12 +60,26 @@
     -moz-box-shadow: 8px 4px 11px -5px rgba(0,0,0,0.45);
 }
 
-
-.btn1:hover{
-    background: rgb(255, 59, 59);
+.register .btn1:hover{
+    background: rgb(255, 135, 43);
     transition: 0.4s;
 }
 
-.demoLogin{
-    padding-top: 0;
+.btn2{
+    height: 35px;
+    width: 17%;
+    border: none;
+    outline: none;
+    border-radius: 60px;
+    font-weight: 600;
+    background: #f87732;
+    color: white;
+    box-shadow: 8px 4px 11px -5px rgba(0,0,0,0.45);
+    -webkit-box-shadow: 8px 4px 11px -5px rgba(0,0,0,0.45);
+    -moz-box-shadow: 8px 4px 11px -5px rgba(0,0,0,0.45);
+}
+
+.btn2:hover{
+    background: rgb(239, 142, 68);
+    transition: 0.4s;
 }

@@ -10,14 +10,40 @@ h1.title-home{
 .navbar{
     padding-top: 3px;
     padding-bottom: 3px;
+    background-image: linear-gradient(-90deg, #e57f2c, #e02929 );
+}
+
+.btndrop{
+    background-image: linear-gradient(-90deg, #e57f2c);
+    outline: transparent;
+    font-size: 17px;
+    font-weight: 500;
+    font-family: 'Quicksand', sans-serif;
 }
 
 
 .navbar-brand{
-    font-family: Arial !important;
-    
+    font-size: 24px;
+    font-family: 'Pacifico', cursive  !important;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 20px rgb(255, 18, 18), 0 0 30px rgb(255, 129, 45), 0 0 10px rgb(255, 115, 21);
 }
 
-.dropdown-menu{
-    width: 1px;
+.dropmenu{
+    background: #e57f2c;
+    font-weight: 500;
+    font-size: 17px;
+    font-family: 'Quicksand', sans-serif;
 }
+
+.dropmenu a{
+    color: #ffffff !important;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.nav-item{
+    font-size: 17px;
+    font-weight: 500;
+    font-family: 'Quicksand', sans-serif;
+}
+
