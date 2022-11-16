@@ -1,5 +1,11 @@
 <%- include ('../partials/header') %>
     <%- include ('../partials/menu') %>
+        <style>
+            .FixedHeightContainer {
+                height: 800px;
+                overflow: auto;
+            }
+        </style>
         <main>
             <div class="container">
                 <% if (locals.message) { %>
@@ -8,36 +14,36 @@
                     </div>
                     <% } %>
                         <form action="/gamesearch" method="POST">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="searchTerm" id="searchTerm"
-                                    placeholder="Search...">
-                                <span class="input-group-btn">
-                                    <button type="submit"> Search</button>
-                                </span>
-                            </div>
+                            <div class="input-group">
+                                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" name="searchTerm" id="searchTerm"
+                                placeholder="Search..."/>
+                                <button type="submit" class="btn btn-primary">Search</button>
+                              </div>
                         </form>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Developer</th>
-                                    <th scope="col">Release Date</th>
-                                </tr>
-                            </thead>
-                            <% games.forEach(function(element){%>
-                                <tr>
-                                    <td>
-                                        <%= element.name %>
-                                    </td>
-                                    <td>
-                                        <%= element.developer %>
-                                    </td>
-                                    <td>
-                                        <%=element.release_date.toLocaleDateString() %>
-                                    </td>
-                                </tr>
-                                <% });%>
-                        </table>
+                        <div class="FixedHeightContainer">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Developer</th>
+                                        <th scope="col">Release Date</th>
+                                    </tr>
+                                </thead>
+                                <% games.forEach(function(element){%>
+                                    <tr>
+                                        <td>
+                                            <%= element.name %>
+                                        </td>
+                                        <td>
+                                            <%= element.developer %>
+                                        </td>
+                                        <td>
+                                            <%=element.release_date.toLocaleDateString() %>
+                                        </td>
+                                    </tr>
+                                    <% });%>
+                            </table>
+                        </div>
             </div>
         </main>
         <%- include ('../partials/footer') %>
