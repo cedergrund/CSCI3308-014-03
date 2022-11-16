@@ -1,59 +1,213 @@
-<%- include ('../partials/header') %>
-    <%- include ('../partials/menu') %>
-    <%- include ('../partials/message') %>
-
+<%- include ('../partials/message') %>
+<div class="container-fluid">
     <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <title>Hot Steam</title>
         <link rel="stylesheet" href="css/home.css">
-        <link rel="stylesheet" href="css/navbar.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Pacifico&display=swap" rel="stylesheet">
+
     </head>
-    <body>
-        <div class="container">
-            <h1 class="title-home">Welcome to Hot Steam!</h1>
+</div>
+
+<body>
+    <!-- Navbar  -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
+      <div class="container fluid">
+        <img src="img/navbar_Logo.png" alt="" alt="Hotsteam" width="51" height="51">
+        <a class="navbar-brand" href="#">Hot Steam</a>
+        <button
+          class="navbar-toggler text-white"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="mx-auto"></div>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/gamesearch">Game Search</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/leaderboard">Leaderboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="profile">Profile</a>
+            </li>
+            <li class="nav-item">
+                <li class="dropdown ms-auto">
+                    <a class="btn dropdown-toggle text-white" href="#" id="navbarDropdown" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        My Account
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" style="background-color:rgb(0, 0, 0);" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/profile">My Profile</a></li>
+                        <li><a class="dropdown-item" href="/register">Register</a></li>
+                        <li><a class="dropdown-item" href="/login">Login</a></li>
+                        <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                    </ul>
+                </li>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+<div class="banner-image w-100 vh-100 d-flex justify-content-center align-items-center">
+    <div class="content text-center">
+      <h1 class="text-white">Hot Steam</h1>
+    </div>
+</div>
+
+
+
+
+ <!-- Main Content Area -->
+ <div class="p-5">
+    <div class="card-deck">
+        <div class="card" style="background-color:rgb(44, 52, 59);">
+            <h1>About Us</h1>
             <p>
                 Here at Hot Steam we help you find games similar to the ones you play and compare your
-                <a href="https://steampowered.com/" title="Steam" target="_blank">Steam</a> stats 
+                <a class="active" href="https://steampowered.com/" title="Steam" target="_blank">Steam</a> stats 
                 with your friends. Think
                 you've got the most playtime in
                 Terraria, let's find out.
-            </p>
-            <p>
-                Already a user? <a href="/login">Login Here!</a>
-            </p>
-            <p>
-                Not a user? <a href="/register">Register Here!</a>
-            </p>
-            <div class="table">
-                <div class="about-us">
-                    <thead>
-                        <tr>
-                            <th>
-                                <h1>About Us</h1>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <p>
-                                    What kind of features does Hot Steam have?
-                                     - User and Game stats for a given game of your choice!
-                                     - Leaderboards and overall playtime in certain games
-                                     - Similar games to the one that is searched!
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>
-                                    This project is brought to you by the Hot Steam Team! This is a group project for 
-                                     CSCI-3308 Software Development and Tools.
-                                </p>
-                                <th scope="col"><img src="img/Colorado_Buffaloes_logo.svg.png" width="70" height="50" alt=""></th>
-                                <th scope="col"><img src="img/9.png" width="65" height="65" alt=""></th>
-                            </td>
-                        </tr>
-                    </tbody>
-                </div>
-            </div>
+          </p>
+          <p>
+            Brought to you by the Hot Steam Team!
+          </p>
         </div>
-        <%- include ('../partials/footer') %>
+        <div class="card"  style="background-color:rgb(44, 52, 59);">
+          <h1>Features</h1>
+          <p>
+            What kind of features does Hot Steam have?
+          </p>
+          <ul class="list-unstyled list-unstyled2 text-white">
+            <li>
+                User and Game stats for a given game of your choice!
+            </li>
+            <li>
+                Leaderboards and overall playtime in certain games
+            </li>
+            <li>
+                Similar games to the one that is searched!
+            </li>
+          </ul>
+        </div>    
+      </div>
+ </div>
+ <div class="p-5">
+    <div class="card-deck">
+        <div class="card"  style="background-color:rgb(44, 52, 59);">
+            <h1>Game Search</h1>
+            <p>
+            This feature lets you search for games on steam and be able to compare stats with friends!
+          </p>
+        </div>
+        <div class="card"  style="background-color:rgb(44, 52, 59);">
+          <h1>Leaderboard</h1>
+          <p>
+            The leaderboard is your go-to place to find average playtime overall, for games with 100k+ players, and much more!
+          </p>
+        </div>    
+      </div>
+ </div>
+
+  <script type="text/javascript">
+    var nav = document.querySelector('nav');
+    window.addEventListener('scroll', function () {
+        if (window.pageYOffset > 100) {
+        nav.classList.add('bg-nav', 'shadow');
+        } else {
+        nav.classList.remove('bg-nav', 'shadow');
+        }
+    });
+</script>
+
+
+<section class="footer">
+<!-- Footer -->
+<footer class="text-white text-center">
+  <!-- Grid container -->
+    <div class="container-fluid">
+    <!--Grid row-->
+    <div class="row row-nav">
+      <!--Grid column-->
+      <div class="col-lg-6 col-md-6 mb-4 mb-md-0" style="padding-top: 13px;">
+        <h5 class="text">Hot Steam</h5>
+        <p style="padding-right: 20px; padding-left: 20px; ">
+            Here at Hot Steam we have created a site that will
+            compare Steam friend data that can be used to find new games
+            that suit you!
+        </p>
+        <img src="img/navbar_Logo.png" alt="" alt="Hotsteam" width="65" height="65">
+      </div>
+      <!--Grid column-->
+
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h5 class="text">Quick Links</h5>
+        <ul class="list-unstyled">
+            <li>
+              <a href="/login" class="text-white">Already a User? Login Here!</a>
+            </li>
+            <li>
+              <a href="/register" class="text-white">Not a User? Register Here!</a>
+            </li>
+            <li>
+              <a href="/profile" class="text-white">Profile</a>
+            </li>
+            <li>
+                <a href="/logout" class="text-white">Logout</a>
+            </li>
+          </ul>
+      </div>
+
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h5 class="text">Contact Us</h5>
+        <ul class="list-unstyled">
+            <li>
+              <a href="https://github.com/cedergrund/CSCI3308-014-03.git" class="text-white">GitHub</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Email</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Discord</a>
+            </li>
+          </ul>
+      </div>
+    </div>
+    <!--Grid row-->
+
+  <!-- Grid container -->
+</div>
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0);">
+    &copy; Copyright 2022 : CSCI 3308 - Hot Steam
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+</section>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>

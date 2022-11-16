@@ -26,3 +26,10 @@ tr {
     text-align: left;
     font-family: 'Quicksand', sans-serif;
 }
+
+body {
+    height: 100%;
+    width: 100%;
+  }
+
+

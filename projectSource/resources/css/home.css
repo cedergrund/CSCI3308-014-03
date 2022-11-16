@@ -1,35 +1,137 @@
 h1.title-home {
-    color: rgb(62, 72, 74);
+    color: rgb(255, 255, 255);
     padding-top: 35px;
     text-align: center;
     font-weight: bold;
     font-family: 'Quicksand', sans-serif;
+}
+
+.content {
+    color: rgb(255, 255, 255);
+    padding-top: 30px;
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Pacifico', 'cursive';
 }
 
 p {
-    color: rgb(62, 72, 74);
+    color: rgb(255, 255, 255);
     text-align: center;
     font-family: 'Quicksand', sans-serif;
 }
 
-pH {
-    color: rgb(62, 72, 74);
+.banner-image {
+    background-image: url(https://jooinn.com/images/fire-174.png);
+    background-size: cover;
+    }
+
+.p-5 {
+    padding: 10px;
+    background-color: rgb(27, 32, 37);
+}
+.card-deck {
+    background-color: rgb(27, 32, 37);
+}
+.card {
+    color:rgb(255, 129, 45);
+    margin: 5px;
+    height: 250px;
+    width: 250px;
+    padding: 15px;
     text-align: center;
     font-weight: bold;
+    font-family: 'Pacifico', 'cursive';
+}
+
+.dropdown {
+    background-color: rgba(0, 0, 0, 0);
+    color:rgb(255, 255, 255)
+}
+
+.dropdown-color {
+    background-color: rgb(27, 32, 37);
+}
+
+.navbar-brand {
+    margin: 10px;
+    padding-top: 10px;
+    font-size: 5px;
+    font-weight: 700;
+    font-family: 'Pacifico', cursive  !important;
+    color: rgb(255, 255, 255);
+}
+
+.navbar-nav {
+    color: rgb(255, 255, 255);
+    text-align: center;
     font-family: 'Quicksand', sans-serif;
 }
 
-div.about-us {
-    color: rgb(62, 72, 74);
+.h1 {
+    margin: 10px;
+    padding-top: 15px;
+    font-size: 10rem;
+    font-weight: 700;
+    font-family: 'Pacifico', 'cursive';
+}
+
+.d-flex {
+    background-color: rgb(62, 72, 74);
+}
+.footer {
+    background-color: rgb(62, 72, 74);
+}
+
+.row {
+    background-color: rgb(62, 72, 74);
+}
+
+.text {
+    color: rgb(255, 255, 255);
+    margin: 10px;
+    padding-top: 15px;
+    font-size: 30px;
+    font-weight: 700;
+    font-family: 'Pacifico', 'cursive';
+}
+
+.col-lg-3 {
+    padding-top: 15px;
+    padding-bottom: 15;
+}
+
+.bg-nav {
+    background-image: linear-gradient(-90deg, #e57f2c, #e02929 );
+}
+
+.footer {
+    background-image: linear-gradient(-90deg, #e57f2c, #e02929 );
+}
+
+.nav-contain {
+    background-image: linear-gradient(-90deg, #e57f2c, #e02929 );
+}
+
+.list-unstyled {
+    color: rgb(255, 255, 255);
     text-align: center;
-    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+}
+.list-unstyled2 {
+    color: rgb(0, 0, 0);
+    text-align: center;
     font-family: 'Quicksand', sans-serif;
 }
 
-div.register {
-    color: rgb(62, 72, 74);
-    padding-top: 35px;
-    text-align: left;
-    font-weight: bold;
-    font-family: 'Quicksand', sans-serif;
+.row-nav {
+    background-image: linear-gradient(-90deg, #e57f2c, #e02929 );
+}
+
+.hover {
+    color: #e02929;
+}
+
+.active {
+    color: #e57f2c;
 }
