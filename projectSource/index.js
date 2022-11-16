@@ -83,6 +83,10 @@ app.get('/', (req, res) => {
 //   });
 
 app.get('/register', (req, res) => {
+    if (req.session.user) {
+        // Default to register page.
+        return res.redirect('/profile');
+    }
     res.render('pages/register.ejs');
 });
 
@@ -100,7 +104,6 @@ app.post('/register', async (req, res) => {
         }
     })
         .then(results => {
-            console.log("results: " + JSON.stringify(results.data)); // the results will be displayed on the terminal if the docker containers are running
             if (results.data.response.players.length != 0) {
                 valid = true;
                 country = results.data.response.players[0].loccountrycode;
@@ -114,7 +117,6 @@ app.post('/register', async (req, res) => {
         res.render('pages/register.ejs', {message: "STEAM ID INVALID. Please check again that your steam id is correct." });
         return;
     }
-    console.log(req.body.username + " " + req.body.email + " " + req.body.steam_id + " " + hash);
     const query = 'insert into users (username, email, steam_id, password, country) values ($1, $2, $3, $4, $5);';
     db.any(query, [
         req.body.username,
@@ -124,8 +126,6 @@ app.post('/register', async (req, res) => {
         country
     ])
         .then(function (data) {
-            console.log(process.env.STEAM_API_KEY);
-            console.log(req.body.steam_id);
             axios({
                 url: `http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001`,
                 method: 'GET',
@@ -178,18 +178,20 @@ app.post('/register', async (req, res) => {
                     }
                 })
                 .catch(error => {
-                    console.log("beep");
                     res.render('pages/login.ejs', {message: "Your games could not be loaded correctly. Please make sure your game visibility is public to access game metrics." });
 
                 })
         })
         .catch(function (err) {
-            console.log("oops");
-            res.redirect('/login', {message: "Your account already exists. Please Login in." });
+            res.render('pages/login.ejs', {message: "Your account already exists. Please Login in." });
         })
 });
 
 app.get('/login', (req, res) => {
+    if (req.session.user) {
+        // Default to register page.
+        return res.redirect('/profile');
+    }
     res.render('pages/login.ejs');
 });
 
@@ -236,6 +238,60 @@ app.post('/login_test', async (req, res) => {
                     username: user.username,
                 };
                 req.session.save();
+                axios({
+                    url: `http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001`,
+                    method: 'GET',
+                    dataType: 'json',
+                    params: {
+                        "key": process.env.STEAM_API_KEY,
+                        "steamid": user.steam_id,
+                    }
+                })
+                
+                    .then(results => {
+                        if (results.data.response.length == 0) {
+
+                        }
+                        else {
+                            // console.log("results: " + JSON.stringify(results.data));
+                            var appids = new Array();
+                            for (let i = 0; i < results.data.response.game_count; i++) {
+                                
+                                const query1 = 'SELECT * FROM games WHERE games.appid = ' +results.data.response.games[i].appid+ ';';
+                                db.one(query1)
+                                .then((data) => {
+                                    // console.log("boop " + results.data.response.games[i].appid);
+                                    axios({
+                                        url: `https://api.steampowered.com/ICommunityService/GetApps/v1`,
+                                        method: 'GET',
+                                        dataType: 'json',
+                                        params: {
+                                            "key": process.env.STEAM_API_KEY,
+                                            "appids[0]": results.data.response.games[i].appid,
+                                        }
+                                    })
+                                        .then(data => {
+                                            // console.log("data: " + JSON.stringify(data.data));
+                                            appids[i] = data.data.response.apps[0].name;
+                                            appids[i] = appids[i].replace("'",'');
+                                            const query2 = "insert into users_to_games(username,appid,name,play_time,last_played) values ('"+ username +"','" +results.data.response.games[i].appid+ "','"+appids[i]+"','"+results.data.response.games[i].playtime_forever+"','"+results.data.response.games[i].rtime_last_played+"');";
+                                            db.any(query2)
+                                    })
+                                })
+                                .catch(error => {
+                                    // console.log("beep " + results.data.response.games[i].appid);
+                
+                                })
+                                
+                                
+                            }
+    
+                        }
+                    })
+                    .catch(error => {
+                        console.log("beep");
+    
+                    })
                 res.redirect('/profile');
             }
         })
@@ -293,8 +349,14 @@ app.get('/leaderboard', (req, res) => {
         });
 });
 
+
 app.get('/profile', (req, res) => {
 
+    if (!req.session.user) {
+        // Default to register page.
+        return res.render('pages/register.ejs', {message: "Please register/login into an account first." });
+    }
+    
     const name = req.session.user.username;
     axios({
         url: `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002`,
@@ -311,7 +373,6 @@ app.get('/profile', (req, res) => {
                 res.render('pages/profile.ejs', { results: [],name, gameData:[],error: true });
             }
             else {
-                console.log("gang");
                 res.render('pages/profile.ejs', { results:results.data.response.players, gameData, name, error: false });
             }
         })
