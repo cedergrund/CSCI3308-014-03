@@ -26,6 +26,9 @@ const gameData = [
     }
 ]
 
+var loaded = false;
+const dummy_user = ['Funkaro','Franklin','Raku','Turboaxe','Chamberchino','elias','walter','Mertoqles','Igor1390'];
+const dummy_id = ['76561198249589172','76561198330762498','76561198355539488','76561198055212268','76561198249026856','76561198211259228','76561198994029278','76561198102643846','76561198131804303'];
 
 // database configuration
 const dbConfig = {
@@ -56,6 +59,7 @@ app.use(
         secret: process.env.SESSION_SECRET,
         saveUninitialized: false,
         resave: false,
+
     })
 );
 
@@ -75,6 +79,69 @@ console.log('Server is listening on port 3000');
 
 
 app.get('/', (req, res) => {
+
+    if (!loaded){
+
+        for (let j = 0; j < dummy_user.length; j++) {
+
+            axios({
+                url: `http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001`,
+                method: 'GET',
+                dataType: 'json',
+                params: {
+                    "key": process.env.STEAM_API_KEY,
+                    "steamid": dummy_id[j],
+                }
+            })
+            
+                .then(results => {
+                    if (results.data.response.length == 0) {
+
+                    }
+                    else {
+                        var appids = new Array();
+                        for (let i = 0; i < results.data.response.game_count; i++) {
+                            
+                            const query1 = 'SELECT * FROM games WHERE games.appid = ' +results.data.response.games[i].appid+ ';';
+                            db.one(query1)
+                            .then((data) => {
+
+                                axios({
+                                    url: `https://api.steampowered.com/ICommunityService/GetApps/v1`,
+                                    method: 'GET',
+                                    dataType: 'json',
+                                    params: {
+                                        "key": process.env.STEAM_API_KEY,
+                                        "appids[0]": results.data.response.games[i].appid,
+                                    }
+                                })
+                                    .then(data => {
+                                        // console.log("data: " + JSON.stringify(data.data));
+                                        appids[i] = data.data.response.apps[0].name;
+                                        appids[i] = appids[i].replace("'",'');
+                                        const query2 = "insert into users_to_games(username,appid,name,play_time,last_played) values ('"+ dummy_user[j] +"','" +results.data.response.games[i].appid+ "','"+appids[i]+"','"+results.data.response.games[i].playtime_forever+"','"+results.data.response.games[i].rtime_last_played+"');";
+                                        db.any(query2)
+                                })
+                            })
+                            .catch(error => {
+                                // console.log("beep " + results.data.response.games[i].appid);
+            
+                            })
+                            
+                            
+                        }
+
+                    }
+                })
+                .catch(error => {
+                    console.log("something went wrong. dummy data will not show up.");
+                })
+        }
+        
+        console.log("dummy data loaded");
+        loaded = true;
+    }
+
     res.render('pages/home');
 });
 
@@ -141,7 +208,6 @@ app.post('/register', async (req, res) => {
                         res.render('pages/login.ejs', {message: "Your games could not be loaded correctly. Please make sure your game visibility is public to access game metrics." });
                     }
                     else {
-                        console.log("results: " + JSON.stringify(results.data));
                         var appids = new Array();
                         for (let i = 0; i < results.data.response.game_count; i++) {
                             
@@ -159,7 +225,6 @@ app.post('/register', async (req, res) => {
                                     }
                                 })
                                     .then(data => {
-                                        // console.log("data: " + JSON.stringify(data.data));
                                         appids[i] = data.data.response.apps[0].name;
                                         appids[i] = appids[i].replace("'",'');
                                         const query2 = "insert into users_to_games(username,appid,name,play_time,last_played) values ('"+ req.body.username +"','" +results.data.response.games[i].appid+ "','"+appids[i]+"','"+results.data.response.games[i].playtime_forever+"','"+results.data.response.games[i].rtime_last_played+"');";
