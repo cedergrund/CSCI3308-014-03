@@ -214,7 +214,8 @@ app.post('/register', async (req, res) => {
             })
 
                 .then(results => {
-                    if (results.data.response.size == 0) {
+                    console.log(results);
+                    if (Object.keys(results.data.response).length == 0) {
                         res.render('pages/login.ejs', { message: "Your games could not be loaded correctly. Please make sure your game visibility is public to access game metrics." });
                     }
                     else {
