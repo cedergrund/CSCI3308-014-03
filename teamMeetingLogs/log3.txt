@@ -1,0 +1,15 @@
+Meeting Minutes: 1 hour
+
+TA Meeting
+-For leaderboard/game search/profile
+tabs? modals? cards?
+info link that expands with more info
+drop down filters? 
+implement same search functionality? make charts to make it more readable
+the three tables on leaderboard into dofferent pages?
+deployments update
+
+Group Meeting:
+Create/Update database that will take data from real users and put it to the leaderboard
+Use steam data to populate data for certain games on the profile page (top 3 games for the user)
+Continue working on api calls and css

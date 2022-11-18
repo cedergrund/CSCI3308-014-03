@@ -30,6 +30,9 @@ tr {
 body {
     height: 100%;
     width: 100%;
-  }
+}
 
-
+.FixedHeightContainer {
+    height: 800px;
+    overflow: auto;
+}
