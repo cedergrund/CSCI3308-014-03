@@ -82,64 +82,74 @@ app.get('/', (req, res) => {
 
     if (!loaded) {
 
-        for (let j = 0; j < dummy_user.length; j++) {
+        const query = "select * from users_to_games where username ='"+ dummy_user[0] + "';";
+        db.any(query)
+        .then(async user => {
+            console.log(user);
+            if (user.length == 0){
+                for (let j = 0; j < dummy_user.length; j++) {
 
-            axios({
-                url: `http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001`,
-                method: 'GET',
-                dataType: 'json',
-                params: {
-                    "key": process.env.STEAM_API_KEY,
-                    "steamid": dummy_id[j],
-                }
-            })
-
-                .then(results => {
-                    if (results.data.response.length == 0) {
-
-                    }
-                    else {
-                        var appids = new Array();
-                        for (let i = 0; i < results.data.response.game_count; i++) {
-
-                            const query1 = 'SELECT * FROM games WHERE games.appid = ' + results.data.response.games[i].appid + ';';
-                            db.one(query1)
-                                .then((data) => {
-
-                                    axios({
-                                        url: `https://api.steampowered.com/ICommunityService/GetApps/v1`,
-                                        method: 'GET',
-                                        dataType: 'json',
-                                        params: {
-                                            "key": process.env.STEAM_API_KEY,
-                                            "appids[0]": results.data.response.games[i].appid,
-                                        }
-                                    })
-                                        .then(data => {
-                                            // console.log("data: " + JSON.stringify(data.data));
-                                            appids[i] = data.data.response.apps[0].name;
-                                            appids[i] = appids[i].replace("'", '');
-                                            const query2 = "insert into users_to_games(username,appid,name,play_time,last_played) values ('" + dummy_user[j] + "','" + results.data.response.games[i].appid + "','" + appids[i] + "','" + results.data.response.games[i].playtime_forever + "','" + results.data.response.games[i].rtime_last_played + "');";
-                                            db.any(query2)
-                                        })
-                                })
-                                .catch(error => {
-                                    // console.log("beep " + results.data.response.games[i].appid);
-
-                                })
-
-
+                    await axios({
+                        url: `http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001`,
+                        method: 'GET',
+                        dataType: 'json',
+                        params: {
+                            "key": process.env.STEAM_API_KEY,
+                            "steamid": dummy_id[j],
                         }
+                    })
+        
+                        .then(results => {
+                            if (results.data.response.length == 0) {
+        
+                            }
+                            else {
+                                var appids = new Array();
+                                for (let i = 0; i < results.data.response.game_count; i++) {
+        
+                                    const query1 = 'SELECT * FROM games WHERE games.appid = ' + results.data.response.games[i].appid + ';';
+                                    db.one(query1)
+                                        .then((data) => {
+        
+                                            axios({
+                                                url: `https://api.steampowered.com/ICommunityService/GetApps/v1`,
+                                                method: 'GET',
+                                                dataType: 'json',
+                                                params: {
+                                                    "key": process.env.STEAM_API_KEY,
+                                                    "appids[0]": results.data.response.games[i].appid,
+                                                }
+                                            })
+                                                .then(data => {
+                                                    // console.log("data: " + JSON.stringify(data.data));
+                                                    appids[i] = data.data.response.apps[0].name;
+                                                    appids[i] = appids[i].replace("'", '');
+                                                    const query2 = "insert into users_to_games(username,appid,name,play_time,last_played) values ('" + dummy_user[j] + "','" + results.data.response.games[i].appid + "','" + appids[i] + "','" + results.data.response.games[i].playtime_forever + "','" + results.data.response.games[i].rtime_last_played + "');";
+                                                    db.any(query2)
+                                                })
+                                        })
+                                        .catch(error => {
+                                            // console.log("beep " + results.data.response.games[i].appid);
+        
+                                        })
+        
+        
+                                }
+        
+                            }
+                        })
+                        .catch(error => {
+                            console.log("something went wrong. dummy data will not show up.");
+                        })
+                }
+                console.log("dummy data loaded");
+            }
+        })
+        .catch(async (err) => {
+        });
 
-                    }
-                })
-                .catch(error => {
-                    console.log("something went wrong. dummy data will not show up.");
-                })
-        }
-
-        console.log("dummy data loaded");
         loaded = true;
+        console.log("done loading")
     }
 
     res.render('pages/home');
@@ -204,7 +214,6 @@ app.post('/register', async (req, res) => {
             })
 
                 .then(results => {
-                    console.log(results);
                     if (results.data.response.size == 0) {
                         res.render('pages/login.ejs', { message: "Your games could not be loaded correctly. Please make sure your game visibility is public to access game metrics." });
                     }
@@ -240,7 +249,7 @@ app.post('/register', async (req, res) => {
 
                         }
 
-                        res.render('pages/login.ejs', { message: "Your games were loaded successfully." });
+                        res.render('pages/login.ejs');
                     }
                 })
                 .catch(error => {
@@ -249,7 +258,7 @@ app.post('/register', async (req, res) => {
                 })
         })
         .catch(function (err) {
-            res.render('pages/login.ejs', { message: "Your account already exists. Please Login in." });
+            res.render('pages/login.ejs', {message: "Your account already exists. Please Login in." });
         })
 });
 
@@ -420,7 +429,7 @@ app.get('/profile', (req, res) => {
 
     if (!req.session.user) {
         // Default to register page.
-        return res.render('pages/register.ejs', { message: "Please register/login into an account first." });
+        return res.render('pages/register.ejs', {error:true, message: "Please register/login into an account first." });
     }
     const name = req.session.user.username;
     const game_query = "select * from users_to_games where username = $1 ORDER BY play_time DESC"
@@ -445,7 +454,7 @@ app.get('/profile', (req, res) => {
         }
     })
         .then(results => {
-            console.log("results: " + JSON.stringify(results.data)); // the results will be displayed on the terminal if the docker containers are running
+            // console.log("results: " + JSON.stringify(results.data)); // the results will be displayed on the terminal if the docker containers are running
             if (results.data.response.players.length == 0) {
                 res.render('pages/profile.ejs', { results: [], players_games, name, gameData: [], error: true });
             }
