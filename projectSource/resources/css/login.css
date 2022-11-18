@@ -5,8 +5,17 @@
     
 }
 
+.body{
+    height: 100%;
+    width: 100%;
+}
+.login .container{
+    
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
 
-.row{
+.login .row{
     
     background: rgb(44, 52, 59);
     border-radius: 30px;
