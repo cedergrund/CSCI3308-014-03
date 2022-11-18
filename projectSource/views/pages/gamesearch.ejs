@@ -1,11 +1,5 @@
 <%- include ('../partials/header') %>
     <%- include ('../partials/menu') %>
-        <style>
-            .FixedHeightContainer {
-                height: 800px;
-                overflow: auto;
-            }
-        </style>
         <main>
             <br>
             <br>
@@ -18,10 +12,11 @@
                     <% } %>
                         <form action="/gamesearch" method="POST">
                             <div class="input-group">
-                                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" name="searchTerm" id="searchTerm"
-                                placeholder="Search..."/>
+                                <input type="search" class="form-control rounded" placeholder="Search"
+                                    aria-label="Search" aria-describedby="search-addon" name="searchTerm"
+                                    id="searchTerm" placeholder="Search..." />
                                 <button type="submit" class="btn btn-primary">Search</button>
-                              </div>
+                            </div>
                         </form>
                         <div class="FixedHeightContainer">
                             <table class="table">

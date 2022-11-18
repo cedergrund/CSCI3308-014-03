@@ -1,56 +1,54 @@
 <%- include ('../partials/header') %>
-<%- include ('../partials/menu') %>
-<%- include ('../partials/message') %>
+  <%- include ('../partials/menu') %>
+    <%- include ('../partials/message') %>
 
-<main>
-  <div class="container">
-    <h1>Welcome back, <%=results[0].personaname%>!</h1>
+      <main>
+        <div class="container">
+          <h1>Welcome back, <%=results[0].personaname%>!</h1>
 
-    <div>
+          <div>
 
-    </div>
-<div class="container">
-  <div class="row">
-    <img style='border:1px solid #000000' src=<%= results[0].avatarfull%>></img>
-
-  </div>
-  <div class="row">
-    <a href=<%=results[0].profileurl%>>Profile URL</a>
-  </div>
-</div>
+          </div>
+          <div class="container">
+            <img style="width:200px;height:200px;" src=<%=results[0].avatarfull%>></img>
+            <br>
+            <a href=<%=results[0].profileurl%>>Your Steam Page</a>
+          </div>
 
 
-<!--
+          <!--
 Owned Games table, currently pulling dummy data until DB is setup
 -->
-    <table class="table">
-      <thead class="thead-dark">
-          <tr>
-              <th scope="col"></th>
-              <th scope="col">Game</th>
-              <th scope="col">Developer</th>
-              <th scope="col">Hours Played</th>
-          </tr>
-      </thead>
-      <% gameData.forEach(function(element){%>
-          <tr>
-              <td>
-                <img class="w-25 h-25" style= border:1px solid #A9A9A9' src="https://logos-world.net/wp-content/uploads/2021/02/Rust-Emblem.png"></img>
-              </td>
-              <td>
-                  <%= element.game %>
-              </td>
-              <td>
-                  <%= element.developer %>
-              </td>
-              <td>
-                  <%= parseInt(element.playtime) %> hours
-              </td>
-          </tr>
-          <% });%>
-  </table>
+          <h1>Recently Played Games</h1>
+          <div class="FixedHeightContainer">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Game</th>
+                  <th scope="col">Hours Played</th>
+                </tr>
+              </thead>
+              <% players_games.forEach(function(element){%>
+                <tr>
+                  <td>
+                    <img style="width:184px; height: 86px;" class="img-thumbnail" style=border:1px solid #A9A9A9'
+                      src="https://cdn.cloudflare.steamstatic.com/steam/apps/<%=element.appid %>/header.jpg"></img>
+                  </td>
+                  <td>
+                    <a href="https://store.steampowered.com/app/<%=element.appid %>">
+                      <%= element.name %>
+                    </a>
+                  </td>
+                  <td>
+                    <%= parseInt(element.play_time) %> hours
+                  </td>
+                </tr>
+                <% });%>
+            </table>
+          </div>
 
-  </div>
-</main>
+        </div>
+      </main>
 
-<%- include ('../partials/footer') %>
+      <%- include ('../partials/footer') %>
