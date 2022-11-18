@@ -408,22 +408,63 @@ app.post('/gamesearch', async (req, res) => {
         });
 });
 
+// app.get('/leaderboard', (req, res) => {
+//     const query = "SELECT name, developer, average_playtime, owners from games ORDER BY average_playtime DESC LIMIT 20";
+//     db.any(query)
+//         .then((games) => {
+//             res.render("pages/leaderboard.ejs", {
+//                 games
+//             });
+//         })
+//         .catch((err) => {
+//             res.render("pages/leaderboard.ejs", {
+//                 games: [],
+//                 errors: true,
+//                 message: err.message,
+//             });
+//         });
+// });
+
 app.get('/leaderboard', (req, res) => {
-    const query = "SELECT name, developer, average_playtime, owners from games ORDER BY average_playtime DESC LIMIT 20";
-    db.any(query)
-        .then((games) => {
-            res.render("pages/leaderboard.ejs", {
-                games
-            });
-        })
-        .catch((err) => {
-            res.render("pages/leaderboard.ejs", {
-                games: [],
-                errors: true,
-                message: err.message,
-            });
+    const avg_playtime_query = "SELECT * from games ORDER BY average_playtime DESC LIMIT 10";
+    const price_query = "SELECT * from games ORDER BY price DESC LIMIT 10";
+    const negrating_query = "SELECT * from games ORDER BY negative_rating DESC LIMIT 10";
+    const rating_query = "SELECT * games ORDER BY positive_ratings DESC LIMIT 10";
+ 
+    db.any(avg_playtime_query)
+        .then((games_playtime) =>
+        {
+            db.any(price_query)
+            .then((games_byprice) =>
+            {
+                db.any(negrating_query)
+                .then((games_bynegrating) =>
+                {
+                    db.any(rating_query)
+                    .then((games_byrating) =>
+                    {
+                        res.render("pages/leaderboard.ejs",
+                        {
+                            games_playtime, games_byprice, games_bynegrating, games_byrating
+                        });
+                    })
+                })
+            })
         });
+            .catch((err) =>
+            {
+                res.render("pages/leaderboard.ejs",
+                {
+                    games_byrating: [],
+                    games_byprice: [],
+                    games_negrating: [],
+                    games_playtime: [],
+                    errors: true,
+                    message: err.message,
+                });
+            });
 });
+
 
 
 app.get('/profile', (req, res) => {
