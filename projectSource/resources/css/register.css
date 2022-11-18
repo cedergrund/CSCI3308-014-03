@@ -1,9 +1,12 @@
-
+.body{
+    height: 100%;
+    width: 100%;
+}
 .register .container{
     padding-left: 356px;
     padding-right: 356px;
-    
-    
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
 
 .register .row{
@@ -16,7 +19,7 @@
 }
 
 .register{
-  
+    
     background: rgb(27, 32, 37);
 }
 
@@ -61,7 +64,7 @@
 }
 
 .register .btn1:hover{
-    background: rgb(255, 135, 43);
+    background: rgb(255, 59, 59);
     transition: 0.4s;
 }
 
@@ -80,6 +83,6 @@
 }
 
 .btn2:hover{
-    background: rgb(239, 142, 68);
+    background: rgb(255, 59, 59);
     transition: 0.4s;
 }
