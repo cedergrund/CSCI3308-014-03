@@ -13,6 +13,7 @@ h1.title-home {
     text-align: center;
     font-weight: bold;
     font-family: 'Pacifico', 'cursive';
+    text-shadow: 2px 2px 20px rgb(255, 18, 18), 0 0 30px rgb(255, 129, 45), 0 0 10px rgb(255, 115, 21);
 }
 
 p {
@@ -35,6 +36,7 @@ p {
 }
 .card {
     color:rgb(255, 129, 45);
+    text-shadow: 3px 4px rgb(104, 35, 35);
     margin: 5px;
     height: 250px;
     width: 250px;
@@ -74,6 +76,7 @@ p {
     font-size: 10rem;
     font-weight: 700;
     font-family: 'Pacifico', 'cursive';
+    
 }
 
 .d-flex {
