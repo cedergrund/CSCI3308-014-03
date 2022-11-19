@@ -11,8 +11,9 @@
 }
 .login .container{
     
-    padding-top: 5%;
-    padding-bottom: 5%;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    max-width: 1325px ;
 }
 
 .login .row{
@@ -32,9 +33,11 @@
     
 }
 
-.login img{
+.login .img-fluid{
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
+    height: 100%; /*delete once we take out demo login*/
+    
 }
 
 .login h1{
@@ -45,7 +48,9 @@
     text-shadow: 3px 4px rgb(104, 35, 35);
 }
 
-
+.login .text_field{
+    width: 83%;
+}
 
 .login .form-inputs{
     height: 49px;
@@ -73,11 +78,8 @@
 }
 
 
-.btn1:hover{
+.login .btn1:hover{
     background: rgb(255, 59, 59);
     transition: 0.4s;
 }
 
-.demoLogin{
-    padding-top: 0;
-}

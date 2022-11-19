@@ -3,10 +3,14 @@
     width: 100%;
 }
 .register .container{
-    padding-left: 356px;
-    padding-right: 356px;
-    padding-top: 5%;
-    padding-bottom: 5%;
+
+    padding-top: 4%;
+    padding-bottom: 4%;
+    max-width: 620px ;
+}
+
+.register .text_field{
+    width: 67%;
 }
 
 .register .row{
@@ -70,7 +74,7 @@
 
 .btn2{
     height: 35px;
-    width: 17%;
+    min-width: 21%;
     border: none;
     outline: none;
     border-radius: 60px;
