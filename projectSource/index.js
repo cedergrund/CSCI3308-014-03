@@ -85,7 +85,7 @@ app.get('/', (req, res) => {
         const query = "select * from users_to_games where username ='"+ dummy_user[0] + "';";
         db.any(query)
         .then(async user => {
-            console.log(user);
+
             if (user.length == 0){
                 for (let j = 0; j < dummy_user.length; j++) {
 
@@ -184,6 +184,7 @@ app.post('/register', async (req, res) => {
             if (results.data.response.players.length != 0) {
                 valid = true;
                 country = results.data.response.players[0].loccountrycode;
+                time_created = results.data.response.players[0].timecreated;
             }
         })
         .catch(error => {
@@ -191,16 +192,17 @@ app.post('/register', async (req, res) => {
         })
 
     if (!valid) {
-        res.render('pages/register.ejs', { message: "STEAM ID INVALID. Please check again that your steam id is correct." });
+        res.render('pages/register.ejs', {error:true, message: "STEAM ID INVALID. Please check again that your steam id is correct." });
         return;
     }
-    const query = 'insert into users (username, email, steam_id, password, country) values ($1, $2, $3, $4, $5);';
+    const query = 'insert into users (username, email, steam_id, password, country, time_created) values ($1, $2, $3, $4, $5, $6);';
     db.any(query, [
         req.body.username,
         req.body.email,
         req.body.steam_id,
         hash,
-        country
+        country,
+        time_created
     ])
         .then(function (data) {
             axios({
@@ -254,7 +256,7 @@ app.post('/register', async (req, res) => {
                     }
                 })
                 .catch(error => {
-                    res.render('pages/login.ejs', { message: "Your games could not be loaded correctly. Please make sure your game visibility is public to access game metrics." });
+                    res.render('pages/login.ejs', {error:true, message: "Your games could not be loaded correctly. Please make sure your game visibility is public to access game metrics." });
 
                 })
         })
@@ -279,6 +281,7 @@ app.post('/login', async (req, res) => {
     // get the student_id based on the emailid
     db.one(query, username)
         .then(async user => {
+
             const match = await bcrypt.compare(req.body.password, user.password); //await is explained in #8
             if (match || user.username == "abc" || user.username == "aaa") {
                 req.session.user = {
@@ -286,15 +289,84 @@ app.post('/login', async (req, res) => {
                     username: user.username,
                 };
                 req.session.save();
+
+                await axios({
+                    url: `http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001`,
+                    method: 'GET',
+                    dataType: 'json',
+                    params: {
+                        "key": process.env.STEAM_API_KEY,
+                        "steamid": user.steam_id,
+                    }
+                })
+
+                    .then(results => {
+                        if (results.data.response.length == 0) {
+
+                        }
+                        else {
+                            // console.log("results: " + JSON.stringify(results.data));
+                            var appids = new Array();
+                            for (let i = 0; i < results.data.response.game_count; i++) {
+
+                                const query1 = 'SELECT * FROM games WHERE games.appid = ' + results.data.response.games[i].appid + ';';
+                                db.one(query1)
+                                    .then(async (data) => {
+                                        // console.log("boop " + results.data.response.games[i].appid);
+                                        await axios({
+                                            url: `https://api.steampowered.com/ICommunityService/GetApps/v1`,
+                                            method: 'GET',
+                                            dataType: 'json',
+                                            params: {
+                                                "key": process.env.STEAM_API_KEY,
+                                                "appids[0]": results.data.response.games[i].appid,
+                                            }
+                                        })
+                                            .then(data => {
+                                                // console.log("data: " + JSON.stringify(data.data));
+                                                appids[i] = data.data.response.apps[0].name;
+                                                appids[i] = appids[i].replace("'", '');
+                                                const query5 = "select * from users_to_games where username = '"+ username + "' and appid = '" + results.data.response.games[i].appid +"';";
+                                                db.any(query5)
+                                                    .then(game =>{
+                                                        if (game.length == 0){
+                                                            
+                                                            const query7 = "insert into users_to_games(username,appid,name,play_time,last_played) values ('" + username + "','" + results.data.response.games[i].appid + "','" + appids[i] + "','" + results.data.response.games[i].playtime_forever + "','" + results.data.response.games[i].rtime_last_played + "');";
+                                                            db.any(query7)
+                                                            
+                                                        }
+                                                        else {
+                                                            const query2 = "Update users_to_games set play_time = '" + results.data.response.games[i].playtime_forever + "', last_played = '" + results.data.response.games[i].rtime_last_played +"' where username = '"+ username + "' and appid = '" + results.data.response.games[i].appid +"';";
+                                                            db.any(query2)
+                                                        }
+                                                    })
+
+                                
+                                            })
+                                    })
+                                    .catch(error => {
+                                        // console.log("beep " + results.data.response.games[i].appid);
+
+                                    })
+
+
+                            }
+
+                        }
+                    })
+                    .catch(error => {
+                        console.log("beep");
+
+                    })
                 res.redirect('/profile');
                 // res.render('pages/home.ejs', {message: "Welcome :)"});
             }
             else {
-                res.render('pages/login.ejs', { message: "Incorrect username or password." });
+                res.render('pages/login.ejs', {error:true, message: "Incorrect username or password." });
             }
         })
         .catch((err) => {
-            res.render('pages/login.ejs', { message: "Incorrect username or password." });
+            res.render('pages/login.ejs', {error:true, message: "Incorrect username or password." });
         });
 });
 
@@ -303,6 +375,7 @@ app.post('/login_test', async (req, res) => {
     const username = "abc";
     const query = "select * from users where username = $1";
     pwd = "test";
+    var ready  = false;
 
     // get the student_id based on the emailid
     db.one(query, username)
@@ -335,7 +408,7 @@ app.post('/login_test', async (req, res) => {
 
                                 const query1 = 'SELECT * FROM games WHERE games.appid = ' + results.data.response.games[i].appid + ';';
                                 db.one(query1)
-                                    .then((data) => {
+                                    .then(async (data) => {
                                         // console.log("boop " + results.data.response.games[i].appid);
                                         axios({
                                             url: `https://api.steampowered.com/ICommunityService/GetApps/v1`,
@@ -350,8 +423,22 @@ app.post('/login_test', async (req, res) => {
                                                 // console.log("data: " + JSON.stringify(data.data));
                                                 appids[i] = data.data.response.apps[0].name;
                                                 appids[i] = appids[i].replace("'", '');
-                                                const query2 = "insert into users_to_games(username,appid,name,play_time,last_played) values ('" + username + "','" + results.data.response.games[i].appid + "','" + appids[i] + "','" + results.data.response.games[i].playtime_forever + "','" + results.data.response.games[i].rtime_last_played + "');";
-                                                db.any(query2)
+                                                const query5 = "select * from users_to_games where username = '"+ username + "' and appid = '" + results.data.response.games[i].appid +"';";
+                                                db.any(query5)
+                                                    .then(game =>{
+                                                        if (game.length == 0){
+                                                            
+                                                            const query7 = "insert into users_to_games(username,appid,name,play_time,last_played) values ('" + username + "','" + results.data.response.games[i].appid + "','" + appids[i] + "','" + results.data.response.games[i].playtime_forever + "','" + results.data.response.games[i].rtime_last_played + "');";
+                                                            db.any(query7)
+                                                            
+                                                        }
+                                                        else {
+                                                            const query2 = "Update users_to_games set play_time = '" + results.data.response.games[i].playtime_forever + "', last_played = '" + results.data.response.games[i].rtime_last_played +"' where username = '"+ username + "' and appid = '" + results.data.response.games[i].appid +"';";
+                                                            db.any(query2)
+                                                        }
+                                                    })
+
+                                
                                             })
                                     })
                                     .catch(error => {
@@ -363,14 +450,24 @@ app.post('/login_test', async (req, res) => {
                             }
 
                         }
+                        console.log("no more");
+                        ready = true;
+                        res.redirect('/loading');
                     })
                     .catch(error => {
                         console.log("beep");
 
                     })
-                res.redirect('/profile');
+                
             }
+        
         })
+});
+
+app.get('/loading', (req, res) => {
+
+    console.log("loading...");
+    res.redirect('/profile');
 });
 
 app.get('/gamesearch', (req, res) => {
