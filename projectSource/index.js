@@ -523,10 +523,16 @@ app.post('/gamesearch', async (req, res) => {
 // });
 
 app.get('/leaderboard', (req, res) => {
-    const avg_playtime_query = "SELECT * from games ORDER BY average_playtime DESC LIMIT 10";
+    const avg_playtime_query = "SELECT * from games ORDER BY average_playtime DESC LIMIT 10"; //WHERE CAST(split_part(CAST(owners as varchar),'-', 1) as int) >= 20000
     const price_query = "SELECT * from games ORDER BY price DESC LIMIT 10";
-    const negrating_query = "SELECT * from games ORDER BY negative_rating DESC LIMIT 10";
-    const rating_query = "SELECT * games ORDER BY positive_ratings DESC LIMIT 10";
+    const popprice_query = "SELECT * from games WHERE CAST(split_part(CAST(owners as varchar),'-', 1) as int) >= 1000000 ORDER BY price DESC LIMIT 10";
+    const negrating_query = "SELECT * from games ORDER BY negative_ratings DESC LIMIT 10";
+    const rating_query = "SELECT * from games ORDER BY positive_ratings DESC LIMIT 10";
+    const newgame_query = "SELECT * from games ORDER BY release_date DESC LIMIT 10";
+    const popnewgame_query = "SELECT * from games WHERE CAST(split_part(CAST(owners as varchar),'-', 1) as int) >= 1000000 ORDER BY release_date DESC LIMIT 10";
+    const oldgame_query = "SELECT * from games ORDER BY release_date ASC LIMIT 10";
+    const popoldgame_query = "SELECT * from games WHERE CAST(split_part(CAST(owners as varchar),'-', 1) as int) >= 1000000 ORDER BY release_date ASC LIMIT 10";
+    const owners_query = "SELECT * from games ORDER BY split_part(CAST(owners as varchar),'-', 1) DESC LIMIT 10";
  
     db.any(avg_playtime_query)
         .then((games_playtime) =>
@@ -534,28 +540,58 @@ app.get('/leaderboard', (req, res) => {
             db.any(price_query)
             .then((games_byprice) =>
             {
-                db.any(negrating_query)
-                .then((games_bynegrating) =>
+                db.any(popprice_query)
+                .then((popgames_byprice) =>
                 {
-                    db.any(rating_query)
-                    .then((games_byrating) =>
+                    db.any(negrating_query)
+                    .then((games_bynegrating) =>
                     {
-                        res.render("pages/leaderboard.ejs",
+                        db.any(rating_query)
+                        .then((games_byrating) =>
                         {
-                            games_playtime, games_byprice, games_bynegrating, games_byrating
-                        });
+                            db.any(newgame_query)
+                            .then((games_bynew) =>
+                            {
+                                db.any(popnewgame_query)
+                                .then((popgames_bynew) =>
+                                {
+                                    db.any(oldgame_query)
+                                    .then((games_byold) =>
+                                    {
+                                        db.any(popoldgame_query)
+                                        .then((popgames_byold) =>
+                                        {
+                                            db.any(owners_query)
+                                            .then((games_byowners) =>
+                                            {
+                                                res.render("pages/leaderboard.ejs",
+                                                {
+                                                    games_playtime, games_byprice, games_bynegrating, games_byrating, games_bynew, games_byold, games_byowners, popgames_bynew, popgames_byold, popgames_byprice
+                                                });
+                                            })
+                                        })
+                                    })
+                                })
+                            })
+                        })
                     })
                 })
             })
-        });
+        })
             .catch((err) =>
             {
                 res.render("pages/leaderboard.ejs",
                 {
                     games_byrating: [],
                     games_byprice: [],
-                    games_negrating: [],
+                    games_bynegrating: [],
                     games_playtime: [],
+                    games_bynew: [],
+                    games_byold: [],
+                    games_byowners: [],
+                    popgames_byprice: [],
+                    popgames_byold: [],
+                    popgames_bynew: [],
                     errors: true,
                     message: err.message,
                 });
