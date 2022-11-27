@@ -25,17 +25,19 @@ p {
 .banner-image {
     background-image: url(https://jooinn.com/images/fire-174.png);
     background-size: cover;
-    }
+}
 
 .p-5 {
     padding: 10px;
     background-color: rgb(27, 32, 37);
 }
+
 .card-deck {
     background-color: rgb(27, 32, 37);
 }
+
 .card {
-    color:rgb(255, 129, 45);
+    color: rgb(255, 129, 45);
     text-shadow: 3px 4px rgb(104, 35, 35);
     margin: 5px;
     height: 250px;
@@ -48,7 +50,7 @@ p {
 
 .dropdown {
     background-color: rgba(0, 0, 0, 0);
-    color:rgb(255, 255, 255)
+    color: rgb(255, 255, 255)
 }
 
 .dropdown-color {
@@ -60,7 +62,7 @@ p {
     padding-top: 10px;
     font-size: 5px;
     font-weight: 700;
-    font-family: 'Pacifico', cursive  !important;
+    font-family: 'Pacifico', cursive !important;
     color: rgb(255, 255, 255);
 }
 
@@ -76,12 +78,13 @@ p {
     font-size: 10rem;
     font-weight: 700;
     font-family: 'Pacifico', 'cursive';
-    
+
 }
 
 .d-flex {
     background-color: rgb(62, 72, 74);
 }
+
 .footer {
     background-color: rgb(62, 72, 74);
 }
@@ -105,15 +108,15 @@ p {
 }
 
 .bg-nav {
-    background-image: linear-gradient(-90deg, #e57f2c, #e02929 );
+    background-image: linear-gradient(-90deg, #e57f2c, #e02929);
 }
 
 .footer {
-    background-image: linear-gradient(-90deg, #e57f2c, #e02929 );
+    background-image: linear-gradient(-90deg, #e57f2c, #e02929);
 }
 
 .nav-contain {
-    background-image: linear-gradient(-90deg, #e57f2c, #e02929 );
+    background-image: linear-gradient(-90deg, #e57f2c, #e02929);
 }
 
 .list-unstyled {
@@ -121,6 +124,7 @@ p {
     text-align: center;
     font-family: 'Quicksand', sans-serif;
 }
+
 .list-unstyled2 {
     color: rgb(0, 0, 0);
     text-align: center;
@@ -128,7 +132,7 @@ p {
 }
 
 .row-nav {
-    background-image: linear-gradient(-90deg, #e57f2c, #e02929 );
+    background-image: linear-gradient(-90deg, #e57f2c, #e02929);
 }
 
 .hover {
