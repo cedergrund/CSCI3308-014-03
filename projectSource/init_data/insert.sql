@@ -1,6 +1,6 @@
 INSERT INTO users (username, email, steam_id, password, country, time_created) VALUES
-('abc', 'abc@gmail.com', '76561198358618132', '123', 'US', '0'),
-('aaa', 'aaa@gmail.com', '76561198284380594', '111', 'US', '0'),
+('abc', 'abc@gmail.com', '76561197960434622', '123', 'US', '0'),
+('aaa', 'aaa@gmail.com', '76561197960434622', '111', 'US', '0'),
 ('Funkaro', 'funkaro@gmail.com', '76561198249589172', 'pwd', 'JP', '1441908587'),
 ('Franklin', 'franklin@gmail.com', '76561198330762498', 'pwd', 'BA', '1473720122'),
 ('Raku', 'raku@gmail.com', '76561198355539488', 'pwd', 'UK', '1483312353'),
