@@ -13,6 +13,7 @@ h1.title-home {
     text-align: center;
     font-weight: bold;
     font-family: 'Pacifico', 'cursive';
+    text-shadow: 2px 2px 20px rgb(255, 18, 18), 0 0 30px rgb(255, 129, 45), 0 0 10px rgb(255, 115, 21);
 }
 
 p {
@@ -33,11 +34,12 @@ p {
 .card-deck {
     background-color: rgb(27, 32, 37);
 }
+
 .card {
+
     color:rgb(255, 129, 45);
+    text-shadow: 3px 4px rgb(104, 35, 35);
     margin: 5px;
-    height: 250px;
-    width: 250px;
     padding: 15px;
     text-align: center;
     font-weight: bold;
@@ -56,7 +58,7 @@ p {
 .navbar-brand {
     margin: 10px;
     padding-top: 10px;
-    font-size: 5px;
+    font-size: 20px;
     font-weight: 700;
     font-family: 'Pacifico', cursive  !important;
     color: rgb(255, 255, 255);
@@ -80,7 +82,7 @@ p {
     background-color: rgb(62, 72, 74);
 }
 .footer {
-    background-color: rgb(62, 72, 74);
+    background-image: linear-gradient(-90deg, #e57f2c, #e02929 );
 }
 
 .row {
@@ -105,7 +107,7 @@ p {
     background-image: linear-gradient(-90deg, #e57f2c, #e02929 );
 }
 
-.footer {
+.footer .footer {
     background-image: linear-gradient(-90deg, #e57f2c, #e02929 );
 }
 
@@ -135,3 +137,5 @@ p {
 .active {
     color: #e57f2c;
 }
+
+

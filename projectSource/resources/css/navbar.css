@@ -21,6 +21,10 @@
     text-shadow: 2px 2px 20px rgb(255, 18, 18), 0 0 30px rgb(255, 129, 45), 0 0 10px rgb(255, 115, 21);
 }
 
+.navbar-nav {
+    text-align: center;
+}
+
 .dropmenu{
     background: #e57f2c;
     font-weight: 500;
