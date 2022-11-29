@@ -5,7 +5,7 @@
     background-image: linear-gradient(-90deg, #e57f2c, #e02929 );
 }
 
-.btndrop{
+.navbar .btndrop{
     background-image: linear-gradient(-90deg, #e57f2c);
     outline: transparent;
     font-size: 17px;
@@ -14,7 +14,7 @@
 }
 
 
-.navbar-brand{
+.navbar .navbar-brand{
     font-size: 24px;
     font-family: 'Pacifico', cursive  !important;
     color: rgb(255, 255, 255);
@@ -25,19 +25,19 @@
     text-align: center;
 }
 
-.dropmenu{
+.navbar .dropmenu{
     background: #e57f2c;
     font-weight: 500;
     font-size: 17px;
     font-family: 'Quicksand', sans-serif;
 }
 
-.dropmenu a{
+.navbar .dropmenu a{
     color: #ffffff !important;
     font-family: 'Quicksand', sans-serif;
 }
 
-.nav-item{
+.navbar .nav-item{
     font-size: 17px;
     font-weight: 500;
     font-family: 'Quicksand', sans-serif;

@@ -1,9 +1,16 @@
-
+.body{
+    height: 100%;
+    width: 100%;
+}
 .register .container{
-    padding-left: 356px;
-    padding-right: 356px;
-    
-    
+
+    padding-top: 4%;
+    padding-bottom: 4%;
+    max-width: 620px ;
+}
+
+.register .text_field{
+    width: 67%;
 }
 
 .register .row{
@@ -16,7 +23,7 @@
 }
 
 .register{
-  
+    
     background: rgb(27, 32, 37);
 }
 
@@ -61,13 +68,13 @@
 }
 
 .register .btn1:hover{
-    background: rgb(255, 135, 43);
+    background: rgb(255, 59, 59);
     transition: 0.4s;
 }
 
 .btn2{
     height: 35px;
-    width: 17%;
+    min-width: 21%;
     border: none;
     outline: none;
     border-radius: 60px;
@@ -80,6 +87,6 @@
 }
 
 .btn2:hover{
-    background: rgb(239, 142, 68);
+    background: rgb(255, 59, 59);
     transition: 0.4s;
 }
