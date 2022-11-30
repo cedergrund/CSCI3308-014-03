@@ -636,12 +636,11 @@ app.get('/profile', (req, res) => {
                     }
                 })
                     .then(recent => {
-                        console.log(recent.data.response.games)
+                        // console.log(recent.data.response.games)
                         res.render('pages/profile.ejs', { results: results.data.response.players, recentGames: recent.data.response.games, players_games, gameData, name, error: false });
                     })
                     .catch(error => {
                         console.log(error)
-                        console.log("error occured")
                         res.render('pages/profile.ejs', { results: results.data.response.players, gameData, name, recent: [], error: false });
                     })
 
