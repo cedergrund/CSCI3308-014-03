@@ -12,12 +12,21 @@
 
 h1.title {
     padding-top: 17px;
-    padding-top: 17px;
     text-align: center;
     font-weight: bold;
     font-family: 'Pacifico', cursive;
     color:#f87732;
     text-shadow: 3px 4px rgb(104, 35, 35);
+}
+
+h1.title1 {
+    font-size: 4rem;
+    padding-top: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Pacifico', cursive;
+    color:#f87732;
+    text-shadow: 3px 3px rgb(104, 35, 35);
 }
 
 h1 {
@@ -49,19 +58,21 @@ body {
 }
 
 h3.title {
-    padding-top: 3px;
+    padding-top: 2px;
+    font-size: 2rem;
     font-weight: bold;
     text-align: left;
     font-family: 'Pacifico', cursive;
-    color:#f87732;
-    text-shadow: 3px 4px rgb(104, 35, 35);
+    color:#f88344;
+    text-shadow: 1px 1px 3px rgb(253, 30, 30), 0 0 4px rgb(0, 0, 0), 0 0 5px rgb(158, 63, 0);
+    
 }
 
 .container {
     background-image: rgb(27, 32, 37);
 }
 
-.main {
+.body {
     background-color: rgb(44, 52, 59);
 }
 
