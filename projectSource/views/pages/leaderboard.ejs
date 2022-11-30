@@ -1,381 +1,385 @@
 <%- include ('../partials/header') %>
     <%- include ('../partials/menu') %>
-        <main style="background-color:rgb(27, 32, 37);">
-            <br>
-            <br>
-            <div class="container">
-                <% if (locals.message) { %>
-                    <div class="alert alert-<%- locals.error ? 'danger' : 'success' %>" role="alert">
-                        <%= message %>
-                    </div>
-                    <% } %>
-                    <br>
-                    <h1 class="title">Game Leaderboard</h1>
-                    <br>
-                    <br>
-                    <h3 class="title">Highest Average Playtime</h3>
-                    <br>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Developer</th>
-                                    <th scope="col">Owners (Approximate)</th>
-                                    <th scope="col">Average Playtime</th>
-                                </tr>
-                            </thead>
-                            <% games_playtime.forEach(function(element){%>
-                                <tr>
-                                    <td>
-                                        <%= element.name.substring(0, 32) %>
-                                    </td>
-                                    <td>
-                                        <%= element.developer.substring(0, 18) %>
-                                    </td>
-                                    <td>
-                                        <%= parseInt(element.owners.substring(0, element.owners.indexOf('-'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> - <%= parseInt(element.owners.substring(element.owners.indexOf('-') + 1)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%>
-                                    </td>
-                                    <td>
-                                        <%= parseInt(element.average_playtime/ 60).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> hours, <%=element.average_playtime % 60 %> mins
-                                    </td>
-                                </tr>
-                                <% });%>
-                        </table>
+        <main>
+            <body style="background-color:rgb(27, 32, 37);">
+                <br>
+                <br>
+                <div class="container">
+                    <% if (locals.message) { %>
+                        <div class="alert alert-<%- locals.error ? 'danger' : 'success' %>" role="alert">
+                            <%= message %>
+                        </div>
+                        <% } %>
+                        
+                        <h1 class="title1">Game Leaderboard</h1>
                         <br>
                         <br>
+                        <h3 class="title">Highest Average Playtime</h3>
                         <br>
- 
-                        <h3 class="title">Most Expensive</h3>
-                        <br>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Developer</th>
-                                    <th scope="col">Owners (Approximate)</th>
-                                    <th scope="col">Average Playtime</th>
-                                    <th scope="col">Price</th>
-                                </tr>
-                            </thead>
-                            <% games_byprice.forEach(function(element){%>
-                                <tr>
-                                    <td>
-                                        <%= element.name.substring(0, 32) %>
-                                    </td>
-                                    <td>
-                                        <%= element.developer.substring(0, 18) %>
-                                    </td>
-                                    <td>
-                                        <%= parseInt(element.owners.substring(0, element.owners.indexOf('-'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> - <%= parseInt(element.owners.substring(element.owners.indexOf('-') + 1)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%>
-                                    </td>
-                                    <td>
-                                        <%= parseInt(element.average_playtime/ 60).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> hours, <%=element.average_playtime % 60 %> mins
-                                    </td>
-                                    <td>
-                                        $<%= parseInt(element.price) %>
-                                    </td>
-                                </tr>
-                                <% });%>
-                        </table>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Developer</th>
+                                        <th scope="col">Owners (Approximate)</th>
+                                        <th scope="col">Average Playtime</th>
+                                    </tr>
+                                </thead>
+                                <% games_playtime.forEach(function(element){%>
+                                    <tr>
+                                        <td>
+                                            <%= element.name.substring(0, 32) %>
+                                        </td>
+                                        <td>
+                                            <%= element.developer.substring(0, 18) %>
+                                        </td>
+                                        <td>
+                                            <%= parseInt(element.owners.substring(0, element.owners.indexOf('-'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> - <%= parseInt(element.owners.substring(element.owners.indexOf('-') + 1)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%>
+                                        </td>
+                                        <td>
+                                            <%= parseInt(element.average_playtime/ 60).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> hours, <%=element.average_playtime % 60 %> mins
+                                        </td>
+                                    </tr>
+                                    <% });%>
+                            </table>
+                            <br>
+                            <br>
 
-                        <br>
-                        <br>
-                        <br>
- 
-                        <h3 class="title">Most Expensive With 1 Million Owners</h3>
-                        <br>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Developer</th>
-                                    <th scope="col">Owners (Approximate)</th>
-                                    <th scope="col">Average Playtime</th>
-                                    <th scope="col">Price</th>
-                                </tr>
-                            </thead>
-                            <% popgames_byprice.forEach(function(element){%>
-                                <tr>
-                                    <td>
-                                        <%= element.name.substring(0, 32) %>
-                                    </td>
-                                    <td>
-                                        <%= element.developer.substring(0, 18) %>
-                                    </td>
-                                    <td>
-                                        <%= parseInt(element.owners.substring(0, element.owners.indexOf('-'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> - <%= parseInt(element.owners.substring(element.owners.indexOf('-') + 1)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%>
-                                    </td>
-                                    <td>
-                                        <%= parseInt(element.average_playtime/ 60).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> hours, <%=element.average_playtime % 60 %> mins
-                                    </td>
-                                    <td>
-                                        $<%= parseInt(element.price) %>
-                                    </td>
-                                </tr>
-                                <% });%>
-                        </table>
+    
+                            <h3 class="title">Most Expensive</h3>
+                            <br>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Developer</th>
+                                        <th scope="col">Owners (Approximate)</th>
+                                        <th scope="col">Average Playtime</th>
+                                        <th scope="col">Price</th>
+                                    </tr>
+                                </thead>
+                                <% games_byprice.forEach(function(element){%>
+                                    <tr>
+                                        <td>
+                                            <%= element.name.substring(0, 32) %>
+                                        </td>
+                                        <td>
+                                            <%= element.developer.substring(0, 18) %>
+                                        </td>
+                                        <td>
+                                            <%= parseInt(element.owners.substring(0, element.owners.indexOf('-'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> - <%= parseInt(element.owners.substring(element.owners.indexOf('-') + 1)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%>
+                                        </td>
+                                        <td>
+                                            <%= parseInt(element.average_playtime/ 60).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> hours, <%=element.average_playtime % 60 %> mins
+                                        </td>
+                                        <td>
+                                            $<%= parseInt(element.price) %>
+                                        </td>
+                                    </tr>
+                                    <% });%>
+                            </table>
 
-                        <br>
-                        <br>
-                        <br>
+                            <br>
+                            <br>
+                            <br>
+    
+                            <h3 class="title">Most Expensive With 1 Million Owners</h3>
+                            <br>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Developer</th>
+                                        <th scope="col">Owners (Approximate)</th>
+                                        <th scope="col">Average Playtime</th>
+                                        <th scope="col">Price</th>
+                                    </tr>
+                                </thead>
+                                <% popgames_byprice.forEach(function(element){%>
+                                    <tr>
+                                        <td>
+                                            <%= element.name.substring(0, 32) %>
+                                        </td>
+                                        <td>
+                                            <%= element.developer.substring(0, 18) %>
+                                        </td>
+                                        <td>
+                                            <%= parseInt(element.owners.substring(0, element.owners.indexOf('-'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> - <%= parseInt(element.owners.substring(element.owners.indexOf('-') + 1)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%>
+                                        </td>
+                                        <td>
+                                            <%= parseInt(element.average_playtime/ 60).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> hours, <%=element.average_playtime % 60 %> mins
+                                        </td>
+                                        <td>
+                                            $<%= parseInt(element.price) %>
+                                        </td>
+                                    </tr>
+                                    <% });%>
+                            </table>
 
-                        <h3 class="title">Most Positive Ratings</h3>
-                        <br>
+                            <br>
+                            <br>
+                            <br>
 
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Developer</th>
-                                    <th scope="col">Owners (Approximate)</th>
-                                    <th scope="col">Average Playtime</th>
-                                    <th scope="col">Positive Ratings</th>
-                                </tr>
-                            </thead>
-                            <% games_byrating.forEach(function(element){%>
-                                <tr>
-                                    <td>
-                                        <%= element.name.substring(0, 32) %>
-                                    </td>
-                                    <td>
-                                        <%= element.developer.substring(0, 18) %>
-                                    </td>
-                                    <td>
-                                        <%= parseInt(element.owners.substring(0, element.owners.indexOf('-'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> - <%= parseInt(element.owners.substring(element.owners.indexOf('-') + 1)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%>
-                                    </td>
-                                    <td>
-                                        <%= parseInt(element.average_playtime/ 60).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> hours, <%=element.average_playtime % 60 %> mins
-                                    </td>
-                                    <td>
-                                        <%= element.positive_ratings.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %>
-                                    </td>
-                                </tr>
-                                <% });%>
-                        </table>
- 
-                        <br>
-                        <br>
-                        <br>
+                            <h3 class="title">Most Positive Ratings</h3>
+                            <br>
 
-                        <h3 class="title">Most Negative Ratings</h3>
-                        <br>
-                    
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Developer</th>
-                                    <th scope="col">Owners (Approximate)</th>
-                                    <th scope="col">Average Playtime</th>
-                                    <th scope="col">Negative Ratings</th>
-                                </tr>
-                            </thead>
-                            <% games_bynegrating.forEach(function(element){%>
-                                <tr>
-                                    <td>
-                                        <%= element.name.substring(0, 32) %>
-                                    </td>
-                                    <td>
-                                        <%= element.developer.substring(0, 18) %>
-                                    </td>
-                                    <td>
-                                        <%= parseInt(element.owners.substring(0, element.owners.indexOf('-'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> - <%= parseInt(element.owners.substring(element.owners.indexOf('-') + 1)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%>
-                                    </td>
-                                    <td>
-                                        <%= parseInt(element.average_playtime/ 60).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> hours, <%=element.average_playtime % 60 %> mins
-                                    </td>
-                                    <td>
-                                        <%= element.negative_ratings.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %>
-                                    </td>
-                                </tr>
-                                <% });%>
-                        </table>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Developer</th>
+                                        <th scope="col">Owners (Approximate)</th>
+                                        <th scope="col">Average Playtime</th>
+                                        <th scope="col">Positive Ratings</th>
+                                    </tr>
+                                </thead>
+                                <% games_byrating.forEach(function(element){%>
+                                    <tr>
+                                        <td>
+                                            <%= element.name.substring(0, 32) %>
+                                        </td>
+                                        <td>
+                                            <%= element.developer.substring(0, 18) %>
+                                        </td>
+                                        <td>
+                                            <%= parseInt(element.owners.substring(0, element.owners.indexOf('-'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> - <%= parseInt(element.owners.substring(element.owners.indexOf('-') + 1)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%>
+                                        </td>
+                                        <td>
+                                            <%= parseInt(element.average_playtime/ 60).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> hours, <%=element.average_playtime % 60 %> mins
+                                        </td>
+                                        <td>
+                                            <%= element.positive_ratings.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %>
+                                        </td>
+                                    </tr>
+                                    <% });%>
+                            </table>
+    
+                            <br>
+                            <br>
+                            <br>
 
-                        <br>
-                        <br>
-                        <br>
+                            <h3 class="title">Most Negative Ratings</h3>
+                            <br>
+                        
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Developer</th>
+                                        <th scope="col">Owners (Approximate)</th>
+                                        <th scope="col">Average Playtime</th>
+                                        <th scope="col">Negative Ratings</th>
+                                    </tr>
+                                </thead>
+                                <% games_bynegrating.forEach(function(element){%>
+                                    <tr>
+                                        <td>
+                                            <%= element.name.substring(0, 32) %>
+                                        </td>
+                                        <td>
+                                            <%= element.developer.substring(0, 18) %>
+                                        </td>
+                                        <td>
+                                            <%= parseInt(element.owners.substring(0, element.owners.indexOf('-'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> - <%= parseInt(element.owners.substring(element.owners.indexOf('-') + 1)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%>
+                                        </td>
+                                        <td>
+                                            <%= parseInt(element.average_playtime/ 60).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> hours, <%=element.average_playtime % 60 %> mins
+                                        </td>
+                                        <td>
+                                            <%= element.negative_ratings.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %>
+                                        </td>
+                                    </tr>
+                                    <% });%>
+                            </table>
 
-                        <h3 class="title">Newest</h3>
-                        <br>
-                    
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Developer</th>
-                                    <th scope="col">Owners (Approximate)</th>
-                                    <th scope="col">Average Playtime</th>
-                                    <th scope="col">Release Date</th>
-                                </tr>
-                            </thead>
-                            <% games_bynew.forEach(function(element){%>
-                                <tr>
-                                    <td>
-                                        <%= element.name.substring(0, 32) %>
-                                    </td>
-                                    <td>
-                                        <%= element.developer.substring(0, 18) %>
-                                    </td>
-                                    <td>
-                                        <%= parseInt(element.owners.substring(0, element.owners.indexOf('-'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> - <%= parseInt(element.owners.substring(element.owners.indexOf('-') + 1)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%>
-                                    </td>
-                                    <td>
-                                        <%= parseInt(element.average_playtime/ 60).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> hours, <%=element.average_playtime % 60 %> mins
-                                    </td>
-                                    <td>
-                                        <%= element.release_date.toDateString() %>
-                                    </td>
-                                </tr>
-                                <% });%>
-                        </table>
+                            <br>
+                            <br>
+                            <br>
 
-                        <br>
-                        <br>
-                        <br>
+                            <h3 class="title">Newest</h3>
+                            <br>
+                        
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Developer</th>
+                                        <th scope="col">Owners (Approximate)</th>
+                                        <th scope="col">Average Playtime</th>
+                                        <th scope="col">Release Date</th>
+                                    </tr>
+                                </thead>
+                                <% games_bynew.forEach(function(element){%>
+                                    <tr>
+                                        <td>
+                                            <%= element.name.substring(0, 32) %>
+                                        </td>
+                                        <td>
+                                            <%= element.developer.substring(0, 18) %>
+                                        </td>
+                                        <td>
+                                            <%= parseInt(element.owners.substring(0, element.owners.indexOf('-'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> - <%= parseInt(element.owners.substring(element.owners.indexOf('-') + 1)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%>
+                                        </td>
+                                        <td>
+                                            <%= parseInt(element.average_playtime/ 60).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> hours, <%=element.average_playtime % 60 %> mins
+                                        </td>
+                                        <td>
+                                            <%= element.release_date.toDateString() %>
+                                        </td>
+                                    </tr>
+                                    <% });%>
+                            </table>
 
-                        <h3 class="title">Newest With 1 Million Owners</h3>
-                        <br>
-                    
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Developer</th>
-                                    <th scope="col">Owners (Approximate)</th>
-                                    <th scope="col">Average Playtime</th>
-                                    <th scope="col">Release Date</th>
-                                </tr>
-                            </thead>
-                            <% popgames_bynew.forEach(function(element){%>
-                                <tr>
-                                    <td>
-                                        <%= element.name.substring(0, 32) %>
-                                    </td>
-                                    <td>
-                                        <%= element.developer.substring(0, 18) %>
-                                    </td>
-                                    <td>
-                                        <%= parseInt(element.owners.substring(0, element.owners.indexOf('-'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> - <%= parseInt(element.owners.substring(element.owners.indexOf('-') + 1)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%>
-                                    </td>
-                                    <td>
-                                        <%= parseInt(element.average_playtime/ 60).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> hours, <%=element.average_playtime % 60 %> mins
-                                    </td>
-                                    <td>
-                                        <%= element.release_date.toDateString() %>
-                                    </td>
-                                </tr>
-                                <% });%>
-                        </table>
+                            <br>
+                            <br>
+                            <br>
 
-                        <br>
-                        <br>
-                        <br>
+                            <h3 class="title">Newest With 1 Million Owners</h3>
+                            <br>
+                        
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Developer</th>
+                                        <th scope="col">Owners (Approximate)</th>
+                                        <th scope="col">Average Playtime</th>
+                                        <th scope="col">Release Date</th>
+                                    </tr>
+                                </thead>
+                                <% popgames_bynew.forEach(function(element){%>
+                                    <tr>
+                                        <td>
+                                            <%= element.name.substring(0, 32) %>
+                                        </td>
+                                        <td>
+                                            <%= element.developer.substring(0, 18) %>
+                                        </td>
+                                        <td>
+                                            <%= parseInt(element.owners.substring(0, element.owners.indexOf('-'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> - <%= parseInt(element.owners.substring(element.owners.indexOf('-') + 1)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%>
+                                        </td>
+                                        <td>
+                                            <%= parseInt(element.average_playtime/ 60).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> hours, <%=element.average_playtime % 60 %> mins
+                                        </td>
+                                        <td>
+                                            <%= element.release_date.toDateString() %>
+                                        </td>
+                                    </tr>
+                                    <% });%>
+                            </table>
 
-                        <h3 class="title">Oldest</h3>
-                        <br>
-                    
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Developer</th>
-                                    <th scope="col">Owners (Approximate)</th>
-                                    <th scope="col">Average Playtime</th>
-                                    <th scope="col">Release Date</th>
-                                </tr>
-                            </thead>
-                            <% games_byold.forEach(function(element){%>
-                                <tr>
-                                    <td>
-                                        <%= element.name.substring(0, 32) %>
-                                    </td>
-                                    <td>
-                                        <%= element.developer.substring(0, 18) %>
-                                    </td>
-                                    <td>
-                                        <%= parseInt(element.owners.substring(0, element.owners.indexOf('-'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> - <%= parseInt(element.owners.substring(element.owners.indexOf('-') + 1)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%>
-                                    </td>
-                                    <td>
-                                        <%= parseInt(element.average_playtime/ 60).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> hours, <%=element.average_playtime % 60 %> mins
-                                    </td>
-                                    <td>
-                                        <%= element.release_date.toDateString() %>
-                                    </td>
-                                </tr>
-                                <% });%>
-                        </table>
+                            <br>
+                            <br>
+                            <br>
 
-                        <br>
-                        <br>
-                        <br>
+                            <h3 class="title">Oldest</h3>
+                            <br>
+                        
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Developer</th>
+                                        <th scope="col">Owners (Approximate)</th>
+                                        <th scope="col">Average Playtime</th>
+                                        <th scope="col">Release Date</th>
+                                    </tr>
+                                </thead>
+                                <% games_byold.forEach(function(element){%>
+                                    <tr>
+                                        <td>
+                                            <%= element.name.substring(0, 32) %>
+                                        </td>
+                                        <td>
+                                            <%= element.developer.substring(0, 18) %>
+                                        </td>
+                                        <td>
+                                            <%= parseInt(element.owners.substring(0, element.owners.indexOf('-'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> - <%= parseInt(element.owners.substring(element.owners.indexOf('-') + 1)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%>
+                                        </td>
+                                        <td>
+                                            <%= parseInt(element.average_playtime/ 60).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> hours, <%=element.average_playtime % 60 %> mins
+                                        </td>
+                                        <td>
+                                            <%= element.release_date.toDateString() %>
+                                        </td>
+                                    </tr>
+                                    <% });%>
+                            </table>
 
-                        <h3 class="title">Oldest With 1 Million Owners</h3>
-                        <br>
-                    
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Developer</th>
-                                    <th scope="col">Owners (Approximate)</th>
-                                    <th scope="col">Average Playtime</th>
-                                    <th scope="col">Release Date</th>
-                                </tr>
-                            </thead>
-                            <% popgames_byold.forEach(function(element){%>
-                                <tr>
-                                    <td>
-                                        <%= element.name.substring(0, 32) %>
-                                    </td>
-                                    <td>
-                                        <%= element.developer.substring(0, 18) %>
-                                    </td>
-                                    <td>
-                                        <%= parseInt(element.owners.substring(0, element.owners.indexOf('-'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> - <%= parseInt(element.owners.substring(element.owners.indexOf('-') + 1)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%>
-                                    </td>
-                                    <td>
-                                        <%= parseInt(element.average_playtime/ 60).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> hours, <%=element.average_playtime % 60 %> mins
-                                    </td>
-                                    <td>
-                                        <%= element.release_date.toDateString() %>
-                                    </td>
-                                </tr>
-                                <% });%>
-                        </table>
+                            <br>
+                            <br>
+                            <br>
 
-                        <br>
-                        <br>
-                        <br>
+                            <h3 class="title">Oldest With 1 Million Owners</h3>
+                            <br>
+                        
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Developer</th>
+                                        <th scope="col">Owners (Approximate)</th>
+                                        <th scope="col">Average Playtime</th>
+                                        <th scope="col">Release Date</th>
+                                    </tr>
+                                </thead>
+                                <% popgames_byold.forEach(function(element){%>
+                                    <tr>
+                                        <td>
+                                            <%= element.name.substring(0, 32) %>
+                                        </td>
+                                        <td>
+                                            <%= element.developer.substring(0, 18) %>
+                                        </td>
+                                        <td>
+                                            <%= parseInt(element.owners.substring(0, element.owners.indexOf('-'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> - <%= parseInt(element.owners.substring(element.owners.indexOf('-') + 1)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%>
+                                        </td>
+                                        <td>
+                                            <%= parseInt(element.average_playtime/ 60).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> hours, <%=element.average_playtime % 60 %> mins
+                                        </td>
+                                        <td>
+                                            <%= element.release_date.toDateString() %>
+                                        </td>
+                                    </tr>
+                                    <% });%>
+                            </table>
 
-                        <h3 class="title">Most Owners (Approximate)</h3>
-                        <br>
-                    
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Developer</th>
-                                    <th scope="col">Average Playtime</th>
-                                    <th scope="col">Owners (Approximate)</th>
-                                </tr>
-                            </thead>
-                            <% games_byowners.forEach(function(element){%>
-                                <tr>
-                                    <td>
-                                        <%= element.name.substring(0, 32) %>
-                                    </td>
-                                    <td>
-                                        <%= element.developer.substring(0, 18) %>
-                                    </td>
-                                    <td>
-                                        <%= parseInt(element.average_playtime/ 60).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> hours, <%=element.average_playtime % 60 %> mins
-                                    </td>
-                                    <td>
-                                        <%= parseInt(element.owners.substring(0, element.owners.indexOf('-'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> - <%= parseInt(element.owners.substring(element.owners.indexOf('-') + 1)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%> 
-                                    </td>
-                                </tr>
-                                <% });%>
-                        </table>
-            </div>
+                            <br>
+                            <br>
+                            <br>
+
+                            <h3 class="title">Most Owners (Approximate)</h3>
+                            <br>
+                        
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Developer</th>
+                                        <th scope="col">Average Playtime</th>
+                                        <th scope="col">Owners (Approximate)</th>
+                                    </tr>
+                                </thead>
+                                <% games_byowners.forEach(function(element){%>
+                                    <tr>
+                                        <td>
+                                            <%= element.name.substring(0, 32) %>
+                                        </td>
+                                        <td>
+                                            <%= element.developer.substring(0, 18) %>
+                                        </td>
+                                        <td>
+                                            <%= parseInt(element.average_playtime/ 60).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> hours, <%=element.average_playtime % 60 %> mins
+                                        </td>
+                                        <td>
+                                            <%= parseInt(element.owners.substring(0, element.owners.indexOf('-'))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> - <%= parseInt(element.owners.substring(element.owners.indexOf('-') + 1)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%> 
+                                        </td>
+                                    </tr>
+                                    <% });%>
+                            </table>
+                </div>
+                <br>
+                <br>
+            </body>
         </main>
 <%- include ('../partials/footer') %>
