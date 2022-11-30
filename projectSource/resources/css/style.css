@@ -21,7 +21,7 @@ h1.title {
 
 h1.title1 {
     font-size: 4rem;
-    padding-top: 5px;
+    padding-top: 4px;
     text-align: center;
     font-weight: bold;
     font-family: 'Pacifico', cursive;
@@ -64,7 +64,7 @@ h3.title {
     text-align: left;
     font-family: 'Pacifico', cursive;
     color:#f88344;
-    text-shadow: 1px 1px 3px rgb(253, 30, 30), 0 0 4px rgb(0, 0, 0), 0 0 5px rgb(158, 63, 0);
+    text-shadow: 1px 1px 3px rgb(253, 30, 30), 0 0 5px rgb(0, 0, 0), 0 0 5px rgb(158, 63, 0);
     
 }
 

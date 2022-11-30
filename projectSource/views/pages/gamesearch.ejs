@@ -3,13 +3,15 @@
         <main style="background-color:rgb(27, 32, 37);">
             <br>
             <br>
-            <br>
             <div class="container">
                 <% if (locals.message) { %>
                     <div class="alert alert-<%- locals.error ? 'danger' : 'success' %>" role="alert">
                         <%= message %>
                     </div>
                     <% } %>
+                        <h1 class="title1">Search Your Game</h1>
+                        <br>
+                        <br>
                         <form action="/gamesearch" method="POST">
                             <div class="input-group">
                                 <input type="search" class="form-control rounded" placeholder="Search"
