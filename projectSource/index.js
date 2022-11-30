@@ -623,11 +623,28 @@ app.get('/profile', (req, res) => {
             if (results.data.response.players.length == 0) {
                 console.log("No player data found")
                 res.render('pages/profile.ejs', { results: [], players_games, name, gameData: [], error: true });
-
             }
             else {
                 console.log("Player data found")
-                res.render('pages/profile.ejs', { results: results.data.response.players, players_games, gameData, name, error: false });
+                axios({
+                    url: `http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001`,
+                    method: 'GET',
+                    dataType: 'json',
+                    params: {
+                        "key": process.env.STEAM_API_KEY,
+                        "steamid": req.session.user.steam_id,
+                    }
+                })
+                    .then(recent => {
+                        console.log(recent.data.response.games)
+                        res.render('pages/profile.ejs', { results: results.data.response.players, recentGames: recent.data.response.games, players_games, gameData, name, error: false });
+                    })
+                    .catch(error => {
+                        console.log(error)
+                        console.log("error occured")
+                        res.render('pages/profile.ejs', { results: results.data.response.players, gameData, name, recent: [], error: false });
+                    })
+
             }
         })
         .catch(error => {
