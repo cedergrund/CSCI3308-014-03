@@ -11,12 +11,12 @@
 }
 .login .container{
     
-    padding-top: 4%;
-    padding-bottom: 4%;
+    padding-top: 5%;
+    padding-bottom: 10%;
     max-width: 1325px ;
 }
 
-.login .row{
+.login .rowLogin{
     
     background: rgb(44, 52, 59);
     border-radius: 30px;
