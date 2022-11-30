@@ -2,7 +2,7 @@
   <%- include ('../partials/menu') %>
     <%- include ('../partials/message') %>
 
-      <main>
+      <main style="background-color:rgb(27, 32, 37);">
         <div class="container">
           <h1>Welcome back, <%=results[0].personaname%>!</h1>
 
@@ -12,14 +12,18 @@
           <div class="container">
             <img style="width:200px;height:200px;" src=<%=results[0].avatarfull%>></img>
             <br>
-            <a href=<%=results[0].profileurl%>>Your Steam Page</a>
+            <a class="active" href=<%=results[0].profileurl%>>Your Steam Page</a>
           </div>
+          <p>Account create on: <%= Date(results[0].timecreated)%>
+          </p>
+          <p>You're most recent game was: <%= recentGames[0].name %>
+          </p>
 
 
           <!--
 Owned Games table, currently pulling dummy data until DB is setup
 -->
-          <h1>Recently Played Games</h1>
+          <h1>Most Played Games</h1>
           <div class="FixedHeightContainer">
             <table class="table">
               <thead class="thead-dark">
@@ -36,7 +40,7 @@ Owned Games table, currently pulling dummy data until DB is setup
                       src="https://cdn.cloudflare.steamstatic.com/steam/apps/<%=element.appid %>/header.jpg"></img>
                   </td>
                   <td>
-                    <a href="https://store.steampowered.com/app/<%=element.appid %>">
+                    <a class="active" href="https://store.steampowered.com/app/<%=element.appid %>">
                       <%= element.name %>
                     </a>
                   </td>

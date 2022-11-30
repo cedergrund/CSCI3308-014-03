@@ -11,16 +11,27 @@
 }
 
 h1.title {
-    color: rgb(62, 72, 74);
     padding-top: 17px;
     padding-top: 17px;
     text-align: center;
     font-weight: bold;
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Pacifico', cursive;
+    color:#f87732;
+    text-shadow: 3px 4px rgb(104, 35, 35);
+}
+
+h1 {
+    padding-top: 17px;
+    padding-top: 17px;
+    font-weight: bold;
+    font-family: 'Pacifico', cursive;
+    color:#f87732;
+    text-shadow: 3px 4px rgb(104, 35, 35);
 }
 
 tr {
-    color: rgb(62, 72, 74);
+    color: rgb(255, 255, 255);
+    font-size: large;
     padding-top: 3px;
     padding-top: 3px;
     text-align: left;
@@ -37,6 +48,24 @@ body {
     overflow: auto;
 }
 
-.radius5 {
-    border-radius: 5%;
+h3.title {
+    padding-top: 3px;
+    font-weight: bold;
+    text-align: left;
+    font-family: 'Pacifico', cursive;
+    color:#f87732;
+    text-shadow: 3px 4px rgb(104, 35, 35);
+}
+
+.container {
+    background-image: rgb(27, 32, 37);
+}
+
+.main {
+    background-color: rgb(44, 52, 59);
+}
+
+.active {
+    color: #e57f2c;
+    font-family: 'Quicksand', sans-serif;
 }

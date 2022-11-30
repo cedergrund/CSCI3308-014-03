@@ -4,7 +4,8 @@ CREATE TABLE users(
  email VARCHAR(50) NOT NULL,
  steam_id VARCHAR(50) NOT NULL,
  password CHAR(60) NOT NULL,
- country VARCHAR(50)
+ country VARCHAR(50),
+ time_created VARCHAR(50)
 );
 
 DROP TABLE IF EXISTS games;
