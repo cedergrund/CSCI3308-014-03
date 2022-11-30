@@ -1,6 +1,7 @@
 <%- include ('../partials/header') %>
     <%- include ('../partials/menu') %>
-        <main style="background-color:rgb(27, 32, 37);">
+        <main >
+            <body class = "gamesearch" style="background-color:rgb(27, 32, 37);">
             <br>
             <br>
             <div class="container">
@@ -14,10 +15,10 @@
                         <br>
                         <form action="/gamesearch" method="POST">
                             <div class="input-group">
-                                <input type="search" class="form-control rounded" placeholder="Search"
+                                <input type="search" class="form-control" placeholder="Search"
                                     aria-label="Search" aria-describedby="search-addon" name="searchTerm"
                                     id="searchTerm" placeholder="Search..." />
-                                <button type="submit" class="btn btn-primary">Search</button>
+                                <button type="submit" class="btn3">Search</button>
                             </div>
                         </form>
                         <br>
@@ -48,5 +49,6 @@
             </div>
             <br>
             <br>
+        </body>
         </main>
         <%- include ('../partials/footer') %>

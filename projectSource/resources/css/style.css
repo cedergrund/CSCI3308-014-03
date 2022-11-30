@@ -21,12 +21,12 @@ h1.title {
 
 h1.title1 {
     font-size: 4rem;
-    padding-top: 4px;
+    padding-top: 5px;
     text-align: center;
     font-weight: bold;
     font-family: 'Pacifico', cursive;
     color:#f87732;
-    text-shadow: 3px 3px rgb(104, 35, 35);
+    text-shadow: 2px 2px 4px rgb(253, 30, 30), 0 0 8px rgb(0, 0, 0), 0 0 5px rgb(158, 63, 0);
 }
 
 h1 {
@@ -57,14 +57,14 @@ body {
     overflow: auto;
 }
 
-h3.title {
+.leaderboard .title {
     padding-top: 2px;
     font-size: 2rem;
-    font-weight: bold;
+    font-weight: 500;
     text-align: left;
     font-family: 'Pacifico', cursive;
-    color:#f88344;
-    text-shadow: 1px 1px 3px rgb(253, 30, 30), 0 0 5px rgb(0, 0, 0), 0 0 5px rgb(158, 63, 0);
+    color:#ff9b65;
+    text-shadow: 1px 1px 2px rgb(253, 30, 30), 0 0 5px rgb(0, 0, 0), 0 0 5px rgb(158, 63, 0);
     
 }
 
@@ -79,4 +79,29 @@ h3.title {
 .active {
     color: #e57f2c;
     font-family: 'Quicksand', sans-serif;
+}
+
+
+.gamesearch .form-control{
+    border-radius: 20px;
+}
+
+.gamesearch .btn3{
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-weight: 600;
+    background: #f87732;
+    color: white;
+    width: 15%;
+    box-shadow: 8px 4px 11px -5px rgba(0,0,0,0.45);
+    -webkit-box-shadow: 8px 4px 11px -5px rgba(0,0,0,0.45);
+    -moz-box-shadow: 8px 4px 11px -5px rgba(0,0,0,0.45);
+}
+
+.gamesearch .btn3:hover{
+    background: rgb(255, 59, 59);
+    transition: 0.4s;
+    color: white;
 }
