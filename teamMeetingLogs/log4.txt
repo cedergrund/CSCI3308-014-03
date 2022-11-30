@@ -1,0 +1,63 @@
+Team Meeting 4: 50 Minutes
+
+TA Meeting:
+Presentation: 
+  - Reading about each of the tools
+    - Purpose/Why/How
+    - add logos
+  - Updates
+    - Presentation:
+    make sure tetsing doc is done and check observations for week 4
+    Architecture Diagram:
+     - first both html and ejs
+     - backend is postgres 
+     - third party is steam api
+     - server: docker db
+     
+     no rushing through the presentation
+     take time and be articulate
+     what is the steam api - what is the purpose of the project
+     
+     have a future enhancement slide 
+     - what could we add to make it better
+     - what we could have done if we had more time
+     
+     submit on time
+     demos videos created - due dec 2 not on wed (cross check)
+     week 4 deliverables created and submitted
+     
+     go through the steam api during the presentation because some might not know about steam
+     - background
+     - from the api website / walk through the entire process
+     - what features we are using and why
+     
+     demo:
+     moment package nodejs library for time
+     add break points to check out async and await for games to show up first time on profile
+     
+     no need to deploy it - cloudfare etc
+     
+ Group Meeting:
+ Conlan working on leaderboard for each game - finish tonight tues 11/29
+  - game profile page - one for each game
+  - adding rating?
+ 
+ Finish presentation by wednesday and the video by friday
+ 
+ project report:
+ contributions for each of us
+ testing
+  - observations
+  - why the user is doing this/that
+    - test cases (add more?)
+  - use case ?
+ dont worry abt deployment only if we can get it to work
+ 
+ for the video
+ - emphasize on the api
+ - talk about what we each did
+ 
+ presentation:
+ tools before architecture diagram
+ - general / emphasize on which we used the most
+ names in speaker notes for who will present each slide
