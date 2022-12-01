@@ -216,7 +216,7 @@ app.post('/register', async (req, res) => {
             })
 
                 .then(results => {
-                    console.log(results);
+                    // console.log(results);
                     if (Object.keys(results.data.response).length == 0) {
                         res.render('pages/login.ejs', { message: "Your games could not be loaded correctly. Please make sure your game visibility is public to access game metrics." });
                     }
@@ -636,18 +636,27 @@ app.get('/profile', (req, res) => {
                     }
                 })
                     .then(recent => {
-                        // console.log(recent.data.response.games)
-                        res.render('pages/profile.ejs', { results: results.data.response.players, recentGames: recent.data.response.games, players_games, gameData, name, error: false });
+                        console.log(recent.data.response.games)
+                        // console.log("none");
+                        if (recent.data.response.games){
+                            console.log("nrm");
+                            res.render('pages/profile.ejs', { results: results.data.response.players, recentGames: recent.data.response.games, players_games, gameData, name, error: false });
+                        }
+                        else {
+                            console.log("errpath");
+                            res.render('pages/profile.ejs', { results: results.data.response.players, recentGames: recent.data.response.games, players_games, gameData, name, error: true });
+                        }
                     })
                     .catch(error => {
-                        console.log(error)
-                        res.render('pages/profile.ejs', { results: results.data.response.players, gameData, name, recent: [], error: false });
+                        // console.log(error)
+                        console.log("yes");
+                        res.render('pages/profile.ejs', { results: results.data.response.players, gameData, name, recentGames: [], error: true });
                     })
 
             }
         })
         .catch(error => {
-            console.log(error);
+            // console.log(error);
             res.render('pages/profile.ejs', { results: [], name, error: true });
         })
 });
@@ -704,7 +713,7 @@ app.get('/gameprofile', async (req, res) => {
 
             
         } catch (err) {
-            console.log(err)
+            // console.log(err)
             res.render('pages/gameprofile.ejs', {appid:req.query.appid, player_rank:[], game_info:{name:""}});
 
             
