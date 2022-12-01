@@ -15,9 +15,9 @@
             <br>
             <a class="active" href=<%=results[0].profileurl%>>Your Steam Page</a>
           </div>
-          <p>Account create on: <%= Date(results[0].timecreated)%>
+          <p class="p-left">Account created on: <%= new Date(results[0].timecreated * 1000).toLocaleDateString("en-US")%>
           </p>
-          <p>You're most recent game was: <%= recentGames[0].name %>
+          <p class="p-left">You're most recent game played was: <%= recentGames[0].name %>
           </p>
 
 

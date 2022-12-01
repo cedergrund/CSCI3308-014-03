@@ -21,6 +21,12 @@ p {
     font-family: 'Quicksand', sans-serif;
 }
 
+.p-left {
+    color: rgb(255, 255, 255);
+    text-align:left;
+    font-family: 'Quicksand', sans-serif;
+}
+
 .banner-image {
     background-image: url(https://jooinn.com/images/fire-174.png);
     background-size: cover;
