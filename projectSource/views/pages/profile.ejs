@@ -11,7 +11,7 @@
 
           </div>
           <div class="container">
-            <img style="width:200px;height:200px;" src=<%=results[0].avatarfull%>></img>
+            <img class="rounded border border-dark shadow p-1 mb-3 bg-white rounded" style="width:200px;height:200px;" src=<%=results[0].avatarfull%>></img>
             <br>
             <a class="active" href=<%=results[0].profileurl%>>Your Steam Page</a>
           </div>
@@ -29,16 +29,18 @@ Owned Games table, currently pulling dummy data until DB is setup
             <table class="table">
               <thead class="thead-dark">
                 <tr>
-                  <th scope="col"></th>
+                  <th scope="col">Profile</th>
                   <th scope="col">Game</th>
                   <th scope="col">Hours Played</th>
                 </tr>
               </thead>
-              <% players_games.forEach(function(element){%>
+              <%players_games.forEach(function(element){%>
                 <tr>
                   <td>
-                    <img style="width:184px; height: 86px;" class="img-thumbnail" style=border:1px solid #A9A9A9'
+                    <a href="/gameprofile?appid=<%=element.appid %>">
+                      <img style="width:184px; height: 86px;" class="img-thumbnail shadow-sm p-1 mb-1 bg-white rounded" style=border:1px solid #A9A9A9'
                       src="https://cdn.cloudflare.steamstatic.com/steam/apps/<%=element.appid %>/header.jpg"></img>
+                    </a>
                   </td>
                   <td>
                     <a class="active" href="https://store.steampowered.com/app/<%=element.appid %>">

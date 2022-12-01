@@ -652,6 +652,65 @@ app.get('/profile', (req, res) => {
         })
 });
 
+app.get('/gameprofile', async (req, res) => {
+        
+        const game_query =
+        `SELECT
+        *
+        FROM games
+        WHERE
+        appid = $1`
+        try {
+            
+            let game_info = await db.any(game_query, [req.query.appid]);
+            if (game_info.length != 1) {
+
+                throw new Error("Didnt find game");
+            }
+            let players_query = `SELECT
+            users_to_games.*,
+            users.steam_id
+            FROM users_to_games
+            INNER JOIN 
+            users 
+            ON users.username = users_to_games.username
+            WHERE
+            appid = $1
+            ORDER BY
+            play_time
+            DESC`
+            let player_rank = await db.any(players_query, [req.query.appid])
+
+            for (player of player_rank) {
+                let steam_call_result = await axios({
+                    url: `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002`,
+                    method: 'GET',
+                    dataType: 'json',
+                    params: {
+                        "key": process.env.STEAM_API_KEY,
+                        "steamids": player.steam_id,
+                    }
+                })
+
+                if (steam_call_result.data.response.players.length == 0) {
+                    player.steam_info  = {}
+                }
+                else {
+                    player.steam_info = steam_call_result.data.response.players[0]
+                }
+            }
+
+            res.render('pages/gameprofile.ejs', {appid:req.query.appid, player_rank:player_rank, game_info:game_info[0]});
+
+            
+        } catch (err) {
+            console.log(err)
+            res.render('pages/gameprofile.ejs', {appid:req.query.appid, player_rank:[], game_info:{name:""}});
+
+            
+        }
+});
+
 app.get("/logout", (req, res) => {
     req.session.destroy();
     res.render("pages/login.ejs", { message: "Logged out Successfully" });

@@ -1,0 +1,55 @@
+<%- include ('../partials/header') %>
+  <%- include ('../partials/menu') %>
+    <%- include ('../partials/message') %>
+
+      <main>
+        <p></p>
+
+        <div class="container">
+                    <div>
+                    <img style="height: 125px;" class="img-thumbnail mb-3" 
+                    src="https://cdn.cloudflare.steamstatic.com/steam/apps/<%=appid %>/header.jpg"></img>
+                    <h5>Genre(s): <%-game_info.genres%></h5>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+            
+<!--
+Game specific leaderboard pulling from users_to_games
+-->
+<p></p>
+
+<div class="container">
+<h1><%-game_info.name%> Leaderboard</h1>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Rank</th>
+        <th scope="col">Username</th>
+        <th scope="col">Hours Played</th>
+      </tr>
+    </thead>
+    <%player_rank.forEach(function(element,index){%>
+      <tr>
+
+            <td style="<%if (index == 0) {%> color: gold<%} else if (index == 1) {%> color:silver<%} else if (index == 2) {%> color:saddlebrown<%}%>">
+                <strong><%= index+1 %></strong>
+            </td>
+            <td style="<%if (index == 0) {%> color: gold<%} else if (index == 1) {%> color:silver<%} else if (index == 2) {%> color:saddlebrown<%}%>">
+                <a> <%= element.steam_info.personaname %></a>
+            </td>
+            <td style="<%if (index == 0) {%> color: gold<%} else if (index == 1) {%> color:silver<%} else if (index == 2) {%> color:saddlebrown<%}%>">
+                <%= parseInt(element.play_time/60) %> hours
+            </td>
+        </tr>
+
+      <% });%>
+  </table>
+</div>
+
+</div>
+</main>
+
+<%- include ('../partials/footer') %>
